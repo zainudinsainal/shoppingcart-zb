@@ -24,6 +24,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
 
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -45,6 +46,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.2'
 end
 
 group :development do
