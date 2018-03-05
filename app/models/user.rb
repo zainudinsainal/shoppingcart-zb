@@ -9,4 +9,6 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   enum gender: [:male ,:female]
 
+  has_many :orders
+
 end
