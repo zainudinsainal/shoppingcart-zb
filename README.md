@@ -1,24 +1,24 @@
-# README
+[![CircleCI](https://circleci.com/gh/zainudinsainal/shoppingcart-zb/tree/master.svg?style=svg)](https://circleci.com/gh/zainudinsainal/shoppingcart-zb/tree/master)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Shopping-Cart
 
-Things you may want to cover:
+This is a catering service shopping cart application. To visit this site, 
+visit [Shopping Cart](https://shopping-cart-zb.herokuapp.com/)
 
-* Ruby version
+# Setup
 
-* System dependencies
+1. Clone the application
+```
+git clone https://github.com/zainudinsainal/shoppingcart-zb.git
+```
 
-* Configuration
+2. Run bundle 
+```
+cd shopping-cart
+bundle
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3. Setup the database
+```
+rake db:create db:migrate db:seed
+```
