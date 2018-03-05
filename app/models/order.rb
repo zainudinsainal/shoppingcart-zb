@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   validates :order_date, presence: true
   enum status:[ :unsuccessful, :successful]
 
-  has_many :orders_products, dependant: :destroy
+  has_many :orders_products, dependent: :destroy
   has_many :products, through: :orders_products
 
   belongs_to :user
