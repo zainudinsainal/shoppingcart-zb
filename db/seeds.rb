@@ -5,11 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Category.create!(name: "Halal")
+halal = Category.create!(name: "Halal")
 Category.create!(name: "Korean")
 Category.create!(name: "Japanese")
 Category.create!(name: "Chinese")
+
+
 #Halal
+
+
+
 Product.create!(name: "Nasi Lemak", description: "Coconut rice with selar fish and sliced cucumbers" , price: '$2.50')
 Product.create!(name: "Mee Rubus", description: "Noodles with dark sauce and sliced egg" , price: '$3.50')
 Product.create!(name: "Mee Soto", description: "Noodles with soup and potato ball" , price: '$3.50')
@@ -55,6 +60,22 @@ Product.create!(name: "Chinese Dumplings", description: "Sides" , price: '$1.50'
 Product.create!(name: "Siew Mai", description: "Sides" , price: '$1.50')
 
 Admin.create!(email: "example@gmail.com" , password: "123123")
+
+
+halal_product = [
+  {name: "Nasi Lemak", description: "Coconut rice with selar fish and sliced cucumbers" , price: '$2.50'},
+  {name: "Mee Rubus", description: "Noodles with dark sauce and sliced egg" , price: '$3.50'},
+  {name: "Mee Soto", description: "Noodles with soup and potato ball" , price: '$3.50'},
+  {name: "Ayam Penyat", description: "Flatten sliced chicken" , price: '$3.50'},
+  {name: "Ayam Bakar", description: "Grilled chicken" , price: '$4.50'},
+  {name: "Potato Ball", description: "Sides" , price: '$0.50'},
+  {name: "Wedges", description: "Sides" , price: '$0.50'},
+  {name: "Acar", description: "Sides/picked cucumber" , price: '$0.50'}
+]
+halal_product.each do |p|
+  product = Product.create!(p)
+  product.categories << halal
+end
 
 
 
