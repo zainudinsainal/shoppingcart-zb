@@ -22,7 +22,7 @@ gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
-
+gem 'filestack-rails', '~> 3.1'
 
 
 # Use CoffeeScript for .coffee assets and views
@@ -48,6 +48,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.2'
+  gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 end
 
 group :development do
