@@ -22,11 +22,11 @@
         </thead>
         <tbody>
           <% @products.each do |product| %>
-            <% product.categories.each  do |cat| %>
-          <tr>
-            <th scope="row"><%= product.id %></th>
-            <td>[<%= cat.name %>]</td>
-            <td><%= product.name %></td>
+            <% product.categories.each do |cat| %>
+            <tr>
+              <th scope="row"><%= product.id %></th>
+              <td>[<%= cat.name %>]</td>
+              <td><%= product.name %></td>
             <td>
               <%= link_to 'Show', admin_product_path(product) %>
               <%= link_to 'Edit', edit_admin_product_path(product) %>
@@ -34,6 +34,7 @@
             </td>
           </tr>
             <% end %>
+          <% end %>
           <% end %>
         </tbody>
       </table>
