@@ -12,29 +12,23 @@
         </div>
         <br>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <p>Filters</p>
-        </div>
-        <br>
-      </div>
+
     </div>
     <div class="col-md-9 mt-2">
     <div class="row">
-      <% @products.each do |product| %>
-        <% product.categories.each do |category| %>
+      <% @category.products.each do |product| %>
+
             <div class="col-md-4 mt-3">
               <div class="card">
                 <div class="card-body">
                   <p></p>
                   <p><%= link_to product.name, product_path(product) %></p>
-                  <p><%= category.name %></p>
                   <p><%= number_to_currency(product.price) %></p>
                   <p><%= link_to 'Add to cart', products_path, class: "btn btn-success btn-block" %></p>
                 </div>
               </div>
             </div>
-          <% end %>
+
         <% end %>
     </div>
     <br>

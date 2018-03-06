@@ -1,7 +1,10 @@
+#Categories
 halal = Category.create!(name: "Halal")
 korean = Category.create!(name: "Korean")
 japanese = Category.create!(name: "Japanese")
 chinese = Category.create!(name: "Chinese")
+
+puts "4 categories created"
 
 #Halal
 halal_product = [
@@ -85,7 +88,7 @@ end
 puts "6 Chinese foods created"
 
 #Admin
-Admin.create!(email: "example@gmail.com" , password: "123123")
+Admin.create!(email: "admin@example.com" , password: "123123")
 
 puts "1 default admin created"
 
