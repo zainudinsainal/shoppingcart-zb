@@ -54,6 +54,7 @@ Product.create!(name: "Braised Pork Rice", description: "Pork Rice" , price: '$3
 Product.create!(name: "Chinese Dumplings", description: "Sides" , price: '$1.50')
 Product.create!(name: "Siew Mai", description: "Sides" , price: '$1.50')
 
+Admin.create!(email: "example@gmail.com" , password: "123123")
 
 
 
