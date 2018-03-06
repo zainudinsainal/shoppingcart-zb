@@ -24,7 +24,7 @@
           <% @products.each do |product| %>
           <tr>
             <th scope="row"><%= product.id %></th>
-            <td>[<%= product.category.name %>]</td>
+            <td>[<%= product.categories.name %>]</td>
             <td><%= product.name %></td>
             <td>
               <%= link_to 'Show', admin_product_path(product) %>
@@ -36,7 +36,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <%= paginate @products %>
+
       </div>
     </div>
   </div>
