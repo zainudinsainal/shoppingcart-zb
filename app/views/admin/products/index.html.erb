@@ -22,9 +22,10 @@
         </thead>
         <tbody>
           <% @products.each do |product| %>
+          <% product.categories.each do |cat| %>
           <tr>
             <th scope="row"><%= product.id %></th>
-            <td>[<%= product.categories.name %>]</td>
+            <td>[<%= cat.name %>]</td>
             <td><%= product.name %></td>
             <td>
               <%= link_to 'Show', admin_product_path(product) %>
@@ -32,6 +33,7 @@
               <%= link_to 'Delete', admin_product_path(product), method: :delete, data: {confirm:"Are you sure?"} %>
             </td>
           </tr>
+          <% end %>
           <% end %>
         </tbody>
       </table>
