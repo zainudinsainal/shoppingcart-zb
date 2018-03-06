@@ -15,11 +15,12 @@
           <p>Price: <%= number_to_currency(@product.price) %></p>
           <p>Description: <%= @product.description %></p>
           <% @product.categories.each do |category| %>
-            <p>Categories: <%= category.name %></p>
+          <p>Categories: <%= category.name %></p>
+          <p><%= link_to 'Add to cart', products_path, class: "btn btn-success btn-block" %></p>
           <% end %>
         </div>
       </div>
     </div>
-  <%= link_to 'Back to index', admin_products_path %>
+  <%= link_to 'Back to index', products_path %>
   </div>
 </div>

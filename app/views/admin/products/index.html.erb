@@ -17,16 +17,18 @@
             <th scope="col">#</th>
             <th scope="col">Category</th>
             <th scope="col">Food</th>
+            <th scope="col">Price</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
           <% @products.each do |product| %>
-            <% product.categories.each do |cat| %>
+            <% product.categories.each do |category| %>
             <tr>
               <th scope="row"><%= product.id %></th>
-              <td>[<%= cat.name %>]</td>
+              <td><%= category.name %></td>
               <td><%= product.name %></td>
+              <td><%= number_to_currency(product.price) %></td>
             <td>
               <%= link_to 'Show', admin_product_path(product) %>
               <%= link_to 'Edit', edit_admin_product_path(product) %>
@@ -35,12 +37,8 @@
           </tr>
             <% end %>
           <% end %>
-          <% end %>
         </tbody>
       </table>
-      <div class="text-center">
-
-      </div>
     </div>
   </div>
 </div>

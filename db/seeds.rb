@@ -1,15 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#Categories
 halal = Category.create!(name: "Halal")
 korean = Category.create!(name: "Korean")
 japanese = Category.create!(name: "Japanese")
 chinese = Category.create!(name: "Chinese")
 
+puts "4 categories created"
 
 #Halal
 halal_product = [
@@ -28,6 +23,8 @@ halal_product.each do |p|
   product.categories << halal
 end
 
+puts "8 Halal foods created"
+
 #korean
 korean_product = [
   {name: "Ginseng Chicken Rice", description: "Chicken soup with chicken" , price: '5.50'},
@@ -37,11 +34,11 @@ korean_product = [
   {name: "Grilled BBQ Pork", description: "Good O' BBQ Pork" , price: '3.50'},
   {name: "Grilled BBQ Chicken", description: "Good O' BBQ Chicken" , price: '3.50'},
   {name: "Grilled BBQ Beef", description: "Good O' BBQ Beef" , price: '3.50'},
-  {name: "Bulgogi/beef", description: "Sides/more good O' BBQ Beef" , price: '1.50'}
-  {name: "Bulgogi/pork", description: "Sides/more good O' BBQ Pork" , price: '1.50'}
-  {name: "Kim Chi", description: "Sides/Korean staple pickled cabbage" , price: '0.50'}
-  {name: "Mandu", description: "Sides/Korean dumplings" , price: '1.50'}
-  {name: "Gimbap", description: "Sides/Korean 'sushi' with seaweed" , price: '1.50'}
+  {name: "Bulgogi/beef", description: "Sides/more good O' BBQ Beef" , price: '1.50'},
+  {name: "Bulgogi/pork", description: "Sides/more good O' BBQ Pork" , price: '1.50'},
+  {name: "Kim Chi", description: "Sides/Korean staple pickled cabbage" , price: '0.50'},
+  {name: "Mandu", description: "Sides/Korean dumplings" , price: '1.50'},
+  {name: "Gimbap", description: "Sides/Korean 'sushi' with seaweed" , price: '1.50'},
   {name: "Gimbap", description: "Sides/Fried Chicken not from KFC" , price: '1.50'}
 ]
 korean_product.each do |p|
@@ -49,10 +46,9 @@ korean_product.each do |p|
   product.categories << korean
 end
 
+puts "13 Korean foods created"
 
 #Japanese
-
-
 japan_product = [
   {name: "Shio Ramen", description: "Chicken broth ramen with vegetables lightly seasoned with salt" , price: '3.50'},
   {name: "Tonkotsu Ramen", description: "Pork broth ramen with sliced pork" , price: '5.50'},
@@ -61,11 +57,11 @@ japan_product = [
   {name: "Japanese Curry/Fish", description: "Curry with rice" , price: '3.50'},
   {name: "Japanese Curry/Pork", description: "Curry with rice" , price: '3.50'},
   {name: "Okonomiyaki", description: "Sides/Savoury Meat Pancake" , price: '2.50'},
-  {name: "Mochi", description: "Sides/Sweet flour ball" , price: '1.50'}
-  {name: "Sushi", description: "Sides/Salmon" , price: '1.50'}
-  {name: "Sushi", description: "Sides/Ebi" , price: '1.50'}
-  {name: "Onigiri", description: "Sides/Rice Ball" , price: '0.50'}
-  {name: "Gimbap", description: "Sides/Korean 'sushi' with seaweed" , price: '1.50'}
+  {name: "Mochi", description: "Sides/Sweet flour ball" , price: '1.50'},
+  {name: "Sushi", description: "Sides/Salmon" , price: '1.50'},
+  {name: "Sushi", description: "Sides/Ebi" , price: '1.50'},
+  {name: "Onigiri", description: "Sides/Rice Ball" , price: '0.50'},
+  {name: "Gimbap", description: "Sides/Korean 'sushi' with seaweed" , price: '1.50'},
   {name: "Chawamushi", description: "Sides/Steamed Egg" , price: '0.50'}
 ]
 japan_product.each do |p|
@@ -73,8 +69,9 @@ japan_product.each do |p|
   product.categories << japanese
 end
 
-#Chinese
+puts "13 Japanese foods created"
 
+#Chinese
 chinese_product = [
   {name: "Ban Mian", description: "Noodles with soup" , price: '3.50'},
   {name: "Zha Jiang Noodles", description: "Dry Noodles with Mince Meat" , price: '3.50'},
@@ -88,8 +85,12 @@ chinese_product.each do |p|
   product.categories << chinese
 end
 
+puts "6 Chinese foods created"
+
 #Admin
-Admin.create!(email: "example@gmail.com" , password: "123123")
+Admin.create!(email: "admin@example.com" , password: "123123")
+
+puts "1 default admin created"
 
 
 
