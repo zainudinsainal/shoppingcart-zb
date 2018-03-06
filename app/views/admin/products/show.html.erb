@@ -1,28 +1,25 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1><%= @product.name %></h1>
-      <h1><%= @product.price %></h1>
-      <h1><%= @product.description %></h1>
-      <p>[<%= @product.categories.name %>]</p>
-    </div>
-
-    <div class="col-md-4">
-
-      <br>
+    <div class="col-md-3 mt-3">
       <div class="card">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Price:</strong> <%= @product.price %></li>
-        </ul>
+        <div class="card-body">
+
+        </div>
+        <br>
       </div>
     </div>
-    <div class="col-md-8">
-
+    <div class="col-md-9 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <p>Name: <%= @product.name %></p>
+          <p>Price: <%= number_to_currency(@product.price) %></p>
+          <p>Description: <%= @product.description %></p>
+          <% @product.categories.each do |category| %>
+            <p>Categories: <%= category.name %></p>
+          <% end %>
+        </div>
+      </div>
     </div>
-
-    <div class="clearfix"></div>
-
-    <hr>
-    <%= link_to 'Back to index', admin_products_path %>
+  <%= link_to 'Back to index', admin_products_path %>
   </div>
 </div>
