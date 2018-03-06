@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 mt-4">
+    <div class="col-md-3 mt-3">
       <div class="card mb-3">
         <div class="card-body">
           <p>Categories</p>
@@ -19,11 +19,16 @@
         <br>
       </div>
     </div>
-    <div class="col-md-9 mt-2">
+    <div class="col-md-9 mt-1">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+      </ol>
+    </nav>
     <div class="row">
       <% @products.each do |product| %>
         <% product.categories.each do |category| %>
-            <div class="col-md-4 mt-3">
+            <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
                   <p></p>
