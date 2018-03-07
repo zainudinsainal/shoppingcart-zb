@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   devise_for :admins ,path: 'admins' ,controllers: { sessions: "admins/sessions"}
 
   resources :products, only: [:index, :show] do
-    resources :reviews, only: [:create , :destroy]
+    resources :reviews, only: [:create , :destroy] do
+      post 'like', on: :member, to: 'likes#create'
+      delete 'unlike', on: :member, to: 'likes#destroy'
+    end
   end
 
+  resources :likes
+  
   resources :users, only: [:show, :edit, :update]
 
   resources :categories, only: :show

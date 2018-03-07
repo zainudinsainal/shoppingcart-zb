@@ -26,6 +26,11 @@
           <%= link_to "Delete", product_review_path(@product, comment), method: :delete %>
         <% end %>
       </p>
+    <%# if Like.find_by(review: @review, user: current_user) %>
+      <%# link_to 'Unlike', like_product_review_path(@review), remote: true, method: :delete %>
+    <%# else %>
+      <%# link_to 'Like', unlike_product_review_path(@review), remote: true, method: :post %>
+    <%# end %>
     </div>
     <hr>
     <% end %>
