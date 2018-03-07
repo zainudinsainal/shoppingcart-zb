@@ -10,5 +10,6 @@ class User < ApplicationRecord
   enum gender: [:male ,:female]
 
   has_many :orders
-
+  has_many :reviews
+  
 end

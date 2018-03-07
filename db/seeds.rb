@@ -94,8 +94,8 @@ puts "1 default admin created"
 
 #User
 User.create!(email: "user@example.com", password: "123123", name:"user1", birthday: Date.new(1958, 6, 22), address:"Tanjong Pagar", gender: 0  )
-
-puts "1 default user created"
+User.create!(email: "user2@example.com", password: "123123", name:"user2", birthday: Date.new(1958, 5, 14), address:"Serangoon", gender: 1  )
+puts "2 default user created"
 
 
 
