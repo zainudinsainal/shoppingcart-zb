@@ -1,24 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 mt-3">
-      <div class="card">
-        <div class="card-body">
-
-        </div>
-        <br>
-      </div>
+    <div class="col-md-7 mt-3">
+      <%= filestack_image @product.image, transform: filestack_transform.resize(width:600, height:600), class: "img-fluid rounded mx-auto"%>
     </div>
-    <div class="col-md-9 mt-3">
-      <div class="card">
-        <div class="card-body">
+    <div class="col-md-5 mt-3">
           <p>Name: <%= @product.name %></p>
           <p>Price: <%= number_to_currency(@product.price) %></p>
           <p>Description: <%= @product.description %></p>
           <% @product.categories.each do |category| %>
             <p>Categories: <%= category.name %></p>
           <% end %>
-        </div>
-      </div>
     </div>
   <%= link_to 'Back to index', admin_products_path %>
   </div>
