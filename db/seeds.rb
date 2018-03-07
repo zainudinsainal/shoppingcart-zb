@@ -61,7 +61,6 @@ japan_product = [
   {name: "Sushi", description: "Sides/Salmon" , price: '1.50'},
   {name: "Sushi", description: "Sides/Ebi" , price: '1.50'},
   {name: "Onigiri", description: "Sides/Rice Ball" , price: '0.50'},
-  {name: "Gimbap", description: "Sides/Korean 'sushi' with seaweed" , price: '1.50'},
   {name: "Chawamushi", description: "Sides/Steamed Egg" , price: '0.50'}
 ]
 japan_product.each do |p|
