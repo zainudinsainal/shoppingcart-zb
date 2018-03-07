@@ -31,7 +31,7 @@
             <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
-                  <p></p>
+                  <p><%= filestack_image product.image, transform: filestack_transform.resize(width:215, height:215), class: "img-fluid rounded mx-auto"%> </p>
                   <p><%= link_to product.name, product_path(product) %></p>
                   <p><%= category.name %></p>
                   <p><%= number_to_currency(product.price) %></p>
