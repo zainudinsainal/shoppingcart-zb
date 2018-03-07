@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Admins::RegistrationsController < Devise::RegistrationsController
+  layout 'admin'
   include Accessible
   skip_before_action :check_user, only: :destroy
   # before_action :configure_sign_up_params, only: [:create]
