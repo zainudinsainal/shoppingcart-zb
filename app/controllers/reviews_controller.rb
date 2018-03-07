@@ -1,20 +1,24 @@
 class ReviewsController < ApplicationController
+  
+  def index
+    @reviews = Review.all
+  end
+
   def create
-    @product = Restaurant.find(params[:restaurant_id])
+    @product = Product.find(params[:product_id])
     @review = @product.reviews.build(review_params)
     @review.user = current_user
-    @review.save!
-    redirect_to product_path(@restaurant)
+    @review.save
+      
+    redirect_to product_path(@product)
   end
 
   def destroy
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @comment = Comment.find(params[:id])
+    @product = Product.find(params[:product_id])
+    @review = Review.find(params[:id])
 
-    if current_user.admin?
-      @comment.destroy
-      redirect_to restaurant_path(@restaurant)
-    end
+      @review.destroy
+      redirect_to product_path(@product)
   end
 
   private
