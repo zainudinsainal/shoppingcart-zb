@@ -9,5 +9,4 @@ class Product < ApplicationRecord
   has_many :orders, through: :orders_products
 
   has_many :reviews
-  has_many :likes, through: :reviews, dependent: :destroy
 end
