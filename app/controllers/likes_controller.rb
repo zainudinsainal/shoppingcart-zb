@@ -1,13 +1,10 @@
 class LikesController < ApplicationController
   def create
-    #byebug
     review = Review.find(params[:id])
     review.likes.create(user: current_user)
     redirect_to product_path(params[:product_id])
   end
-
-
-
+  
   def destroy
     review = Review.find(params[:id])
     like = Like.find_by(user: current_user, review: review)

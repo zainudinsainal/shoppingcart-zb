@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_for :admins ,path: 'admins' ,controllers: { sessions: "admins/sessions"}
 
   resources :products, only: [:index, :show] do
+    post :favourite
+    post :unfavorite
     resources :reviews, only: [:create , :destroy] do
       post 'like', on: :member, to: 'likes#create'
       delete 'unlike', on: :member, to: 'likes#destroy'
