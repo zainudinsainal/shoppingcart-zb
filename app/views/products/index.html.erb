@@ -37,6 +37,10 @@
                   <p><%= number_to_currency(product.price) %></p>
                   <p><%= link_to 'Add to cart', products_path, class: "btn btn-success btn-block" %></p>
                 </div>
+
+                <%= link_to 'Favorite', product_favourite_path(product), method: :post, class: "btn btn-primary" %></div>
+                <%= Favourite.count %>
+                <%= link_to 'Unfavorite', product_unfavorite_path(product), method: :post, class: "btn btn-info" %><div>
               </div>
             </div>
           <% end %>

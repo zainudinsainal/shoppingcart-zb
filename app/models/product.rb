@@ -9,4 +9,5 @@ class Product < ApplicationRecord
   has_many :orders, through: :orders_products
 
   has_many :reviews
+  has_many :favourites
 end
