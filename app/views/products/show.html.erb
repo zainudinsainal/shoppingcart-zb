@@ -16,27 +16,30 @@
   <div class="container">
   <div class="row">
   <div class="col-md-12">
-    <% @product.reviews.each do |comment| %>
+    <% @product.reviews.each do |review| %>
     <div>
-      <h4><%= comment.user.name %></h4>
-      <p><%= simple_format comment.content %></p>
+      <h4><%= review.user.name %></h4>
+      <p><%= simple_format review.content %></p>
       <p class="text-muted">
-        <em><%= time_ago_in_words(comment.created_at) %> ago </em>
-        <% if comment.user == current_user %>
-          <%= link_to "Delete", product_review_path(@product, comment), method: :delete %>
+        <em><%= time_ago_in_words(review.created_at) %> ago </em>
+        <% if review.user == current_user %>
+          <%= link_to "Delete", product_review_path(@product, review), method: :delete %>
         <% end %>
       </p>
-    <%# if Like.find_by(review: @review, user: current_user) %>
-      <%# link_to 'Unlike', like_product_review_path(@review), remote: true, method: :delete %>
-    <%# else %>
-      <%# link_to 'Like', unlike_product_review_path(@review), remote: true, method: :post %>
-    <%# end %>
+      
+    <% if Like.find_by(review: review, user: current_user) %>
+      <%= link_to 'Unlike', unlike_product_review_path(@product, review), method: :delete %>
+    <% else %>
+      <%= link_to 'Like', like_product_review_path(@product, review), method: :post %>
+    <% end %>
+    
+    <% @product.reviews.each do |review| %>
+      <%= review.likes.count %>
+    <% end %>
     </div>
     <hr>
     <% end %>
   </div>
-
-
 
   <div class="col-md-12">
     <%= form_for [@product, @review] do |f| %>

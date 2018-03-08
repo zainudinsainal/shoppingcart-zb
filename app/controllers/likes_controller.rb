@@ -1,17 +1,18 @@
 class LikesController < ApplicationController
   def create
-    Like.create(product_id: params[:id], user: current_user)
-    @reviews = Post.all
-    render :toggle
+    #byebug
+    review = Review.find(params[:id])
+    review.likes.create(user: current_user)
+    redirect_to product_path(params[:product_id])
   end
 
 
 
   def destroy
-    like = Like.find_by(product_id: params[:id])
+    review = Review.find(params[:id])
+    like = Like.find_by(user: current_user, review: review)
     like.destroy
-    @reviews = Post.all
-    render :toggle
+    redirect_to product_path(params[:product_id])
   end
 
   private
