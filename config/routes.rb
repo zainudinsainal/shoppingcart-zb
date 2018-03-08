@@ -19,6 +19,13 @@ Rails.application.routes.draw do
 
   resources :categories, only: :show
 
+  resource :cart, only: [:show] do
+    put 'add/:product_id', to: 'carts#add_to_cart', as: :add_to
+    put 'remove/:product_id', to: 'carts#remove_from_cart', as: :remove_from
+    put 'add_one/:product_id', to: 'carts#add_one', as: :add_one_to
+    put 'remove_one/:product_id', to: 'carts#remove_one', as: :remove_one_from
+  end
+
   root "products#index"
 
   namespace :admin do
