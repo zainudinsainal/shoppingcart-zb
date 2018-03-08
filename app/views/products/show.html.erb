@@ -10,50 +10,57 @@
       <% @product.categories.each do |category| %>
       <p>Categories: <%= category.name %></p>
       <p><%= link_to 'Add to cart', products_path, class: "btn btn-success btn-block" %></p>
+
       <% end %>
     </div>
   </div>
   <div class="container">
   <div class="row">
-  <div class="col-md-12">
-    <% @product.reviews.each do |review| %>
-    <div>
-      <h4><%= review.user.name %></h4>
-      <p><%= simple_format review.content %></p>
-      <p class="text-muted">
-        <em><%= time_ago_in_words(review.created_at) %> ago </em>
-        <% if review.user == current_user %>
-          <%= link_to "Delete", product_review_path(@product, review), method: :delete %>
-        <% end %>
-      </p>
-      
-    <% if Like.find_by(review: review, user: current_user) %>
-      <%= link_to 'Unlike', unlike_product_review_path(@product, review), method: :delete %>
-    <% else %>
-      <%= link_to 'Like', like_product_review_path(@product, review), method: :post %>
-    <% end %>
-    
-    <% @product.reviews.each do |review| %>
-      <%= review.likes.count %>
-    <% end %>
-    </div>
-    <hr>
-    <% end %>
-  </div>
-
-  <div class="col-md-12">
+    <div class="col-md-12">
+      <h4>Food Reviews</h4>
     <%= form_for [@product, @review] do |f| %>
     <div class="form-group">
       <%= f.text_area :content, placeholder: "Pls write a review about us !", class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.submit class: "btn btn-primary" %>
-      <%= f.button "Cancel", type: :reset, class: "btn btn-outline-dark" %>
+      <%= f.file_field :image_review %>
+
     </div>
   <% end %>
   </div>
+
+  <br>
+    <% @product.reviews.each do |review| %>
+  <div class="col-md-2">
+    <%= image_tag review.image_review, class: "img-fluid rounded mx-auto picture" %>
+  </div>
+  <div class="col-md-10">
+      <div class="card">
+        <div class="card-body">
+        
+          <small><b><%= review.user.name %></b> Reviewed <%= time_ago_in_words(review.created_at)%> ago</small>
+          <%= simple_format review.content %>
+            <% if review.user == current_user %>
+              <%= link_to "Delete", product_review_path(@product, review), method: :delete %>
+            <% end %>
+          </p>
+        <% if Like.find_by(review: review, user: current_user) %>
+          <%= link_to 'Unlike', unlike_product_review_path(@product, review), method: :delete %>
+        <% else %>
+          <%= link_to 'Like', like_product_review_path(@product, review), method: :post %>
+        <% end %>
+        <% @product.reviews.each do |review| %>
+          <%= review.likes.count %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+    <% end %>
+
+
+
    
   </div>
   </div>
 </div>
-  <%= link_to 'Back to index', products_path %>
