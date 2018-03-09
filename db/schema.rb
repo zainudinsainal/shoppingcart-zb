@@ -49,10 +49,12 @@ ActiveRecord::Schema.define(version: 20180308085901) do
   end
 
   create_table "favourites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_favourites_on_product_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -127,6 +129,8 @@ ActiveRecord::Schema.define(version: 20180308085901) do
 
   add_foreign_key "categories_products", "categories"
   add_foreign_key "categories_products", "products"
+  add_foreign_key "favourites", "products"
+  add_foreign_key "favourites", "users"
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
   add_foreign_key "orders", "users"
