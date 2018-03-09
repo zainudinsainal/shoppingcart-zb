@@ -22,11 +22,11 @@
                     <% product = Product.find(product_id) %>
                     <td><%= link_to product.name, product_path(product_id)  %></td>
                     <td><%= number_to_currency(product.price) %></td>
-                    <td><%= link_to '-', remove_one_from_cart_path(product), method: :put %></td>
+                    <td><%= link_to '-', remove_one_product_path(product), method: :put %></td>
                     <td><%= quantity %></td>
-                    <td><%= link_to '+', add_one_to_cart_path(product), method: :put %></td>
+                    <td><%= link_to '+', add_one_product_path(product), method: :put %></td>
                     <td><%= number_to_currency(product.price * quantity.to_i) %></td>
-                    <td><%= link_to 'Remove Food', remove_from_cart_path(product), method: :put %></td>
+                    <td><%= link_to 'Remove Food', remove_from_cart_product_path(product), method: :put %></td>
                   <% end %>
                 </tr>
               </tbody>

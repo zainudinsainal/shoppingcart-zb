@@ -9,7 +9,7 @@
       <p>Description: <%= @product.description %></p>
       <% @product.categories.each do |category| %>
       <p>Categories: <%= category.name %></p>
-      <%= link_to 'Add to cart', add_to_cart_path(@product.id), method: :put, class: "btn btn-success" %>
+      <%= link_to 'Add to cart', add_one_product_path(@product.id), method: :put, class: "btn btn-success" %>
     <% if Favourite.find_by(product: @product) %>
       <%= link_to icon('fas', 'star'), product_unfavorite_path(@product), method: :delete %>
     <% else %>
