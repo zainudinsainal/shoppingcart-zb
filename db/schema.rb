@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308085901) do
+ActiveRecord::Schema.define(version: 20180309111754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20180308085901) do
   end
 
   create_table "favourites", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "product_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_favourites_on_product_id"
@@ -92,8 +92,19 @@ ActiveRecord::Schema.define(version: 20180308085901) do
     t.decimal "price", precision: 10, scale: 2, null: false
     t.text "description", null: false
     t.string "image", default: ""
+    t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_products_on_restaurant_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_relationships_on_restaurant_id"
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -143,6 +154,9 @@ ActiveRecord::Schema.define(version: 20180308085901) do
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "products", "restaurants"
+  add_foreign_key "relationships", "restaurants"
+  add_foreign_key "relationships", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
 end
