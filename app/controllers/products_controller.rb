@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @restaurant = @product.restaurant
     @review = Review.new
   end
 
@@ -38,6 +39,8 @@ class ProductsController < ApplicationController
       redirect_to product_path(params[:id])
     end
   end
+
+
 
   private
 
