@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-7 mt-3">
-      <%= filestack_image @product.image, transform: filestack_transform.resize(width:600, height:600), class: "img-fluid rounded mx-auto"%>
+      
+      <%= image_tag @product.image, class: "img-fluid rounded mx-auto"%>
     </div>
     <div class="col-md-5 mt-3">
       <p>Name: <%= @product.name %></p>
@@ -9,7 +10,10 @@
       <p>Description: <%= @product.description %></p>
       <% @product.categories.each do |category| %>
       <p>Categories: <%= category.name %></p>
-      <p><%= link_to 'Add to cart', products_path, class: "btn btn-success btn-block" %></p>
+      <%= link_to 'Add to cart', add_to_cart_path(@product.id), method: :put, class: "btn btn-success" %>
+      <%= link_to 'Favorite', product_favourite_path(@product), method: :post, class: "btn btn-primary" %>
+      <%= link_to 'Unfavorite', product_unfavorite_path(@product), method: :post, class: "btn btn-info" %>
+      <%= Favourite.count %>
 
       <% end %>
     </div>

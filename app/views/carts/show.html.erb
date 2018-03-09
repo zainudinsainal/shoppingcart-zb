@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-left">Cart</h1>
+      <div id="cart-content">
+        <div class="row justify-content-between mt-3">
+          <div class="col-7">
+          <% if @cart_items && !@cart_items.empty? %>
+            <table class="table table-light">
+              <thead>
+                <tr>
+                  <th scope="col">Food</th>
+                  <th scope="col">Price</th>
+                  <th scope="col" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;Quantity</th>
+                  <th scope="col">Total</th>
+                  <th scope="col" colspan="1"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @cart_items.each do |product_id, quantity|%>
+                <tr>
+                    <% product = Product.find(product_id) %>
+                    <td><%= link_to product.name, product_path(product_id)  %></td>
+                    <td><%= number_to_currency(product.price) %></td>
+                    <td><%= link_to '-', remove_one_from_cart_path(product), method: :put %></td>
+                    <td><%= quantity %></td>
+                    <td><%= link_to '+', add_one_to_cart_path(product), method: :put %></td>
+                    <td><%= number_to_currency(product.price * quantity.to_i) %></td>
+                    <td><%= link_to 'Remove Food', remove_from_cart_path(product), method: :put %></td>
+                  <% end %>
+                </tr>
+              </tbody>
+            </table>
+          <% else %>
+          <p> Your cart is empty</p>
+          <% end %>
+          </div>
+          <% if @cart_items && !@cart_items.empty? %>
+          <div class="col-3 d-flex flex-column.align-items-center">
+            <% total_price = @cart_items.reduce(0) do |sum, (product_id, quantity)| %>
+              <% product = Product.find(product_id) %>
+               <% sum + (product.price * quantity.to_i)  %>  
+            <% end %>
+            <h4>Grand total: <b><%= number_to_currency(total_price) %></b></h4>
+          <% end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

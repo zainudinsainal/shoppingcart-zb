@@ -35,14 +35,7 @@
                   <p><%= link_to product.name, product_path(product) %></p>
                   <p><%= category.name %></p>
                   <p><%= number_to_currency(product.price) %></p>
-                  <p><%= link_to 'Add to cart', products_path, class: "btn btn-success btn-block" %></p>
                 </div>
-                <%= product.favourites.count %>
-                <% if Favourite.find_by(product: @product) %>
-                  <%= link_to 'Favorite', product_favourite_path(product), method: :post, class: "btn btn-primary" %>
-                <% else %>
-                  <%= link_to 'Unfavorite', product_unfavorite_path(product), method: :delete, class: "btn btn-info" %>
-                <% end %>
               </div>
             </div>
           <% end %>
