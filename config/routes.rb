@@ -4,15 +4,16 @@ Rails.application.routes.draw do
   devise_for :users ,path: 'users' ,controllers: { sessions: "users/sessions"}
   devise_for :admins ,path: 'admins' ,controllers: { sessions: "admins/sessions"}
 
+  resources :restaurants, only: [:show]
   resources :products, only: [:index, :show] do
-    post :favourite
-    delete :unfavorite
-    resources :reviews, only: [:create , :destroy] do
+      post :favourite
+      delete :unfavorite
+    resources :reviews, only: [:create, :destroy] do
       post 'like', on: :member, to: 'likes#create'
       delete 'unlike', on: :member, to: 'likes#destroy'
     end
   end
-
+  
   resources :likes
 
   resources :users, only: [:show, :edit, :update]
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products
     resources :categories
+    resources :restaurants
     root "products#index"
   end
 

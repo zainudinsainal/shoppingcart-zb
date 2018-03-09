@@ -10,6 +10,7 @@ class Product < ApplicationRecord
 
   has_many :reviews
   has_many :favourites
+  belongs_to :restaurant
 
   mount_uploader :image, ImageUploader
 end
