@@ -11,8 +11,11 @@
       <% @product.categories.each do |category| %>
       <p>Categories: <%= category.name %></p>
       <%= link_to 'Add to cart', add_to_cart_path(@product.id), method: :put, class: "btn btn-success" %>
+    <% if Favourite.find_by(product: @product) %>
+      <%= link_to 'Unfavorite', product_unfavorite_path(@product), method: :delete, class: "btn btn-info" %>
+    <% else %>
       <%= link_to 'Favorite', product_favourite_path(@product), method: :post, class: "btn btn-primary" %>
-      <%= link_to 'Unfavorite', product_unfavorite_path(@product), method: :post, class: "btn btn-info" %>
+    <% end %>
       <%= Favourite.count %>
 
       <% end %>

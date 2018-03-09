@@ -14,14 +14,13 @@ class ProductsController < ApplicationController
 
   def favourite
     @product = Product.find(params[:product_id])
-    #byebug
-    @product.favourites.create!(product: @product)
+    @product.favourites.create!(product: @product, user: current_user)
     redirect_back(fallback_location: root_path)
   end
 
   def unfavorite
     @product = Product.find(params[:product_id])
-    favorite = Favourite.find_by(product: @product)
+    favorite = Favourite.find_by(product: @product, user: current_user)
     favorite.destroy
     redirect_back(fallback_location: root_path)
   end
