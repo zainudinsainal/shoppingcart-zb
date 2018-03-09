@@ -1,3 +1,9 @@
+#Restaurant
+restaurant = Restaurant.create!(stall_name: "Ah Wang Pot Luck", stall_address: "Marina Bay", founded_date: Date.new(1960, 7, 27))
+restaurant1 = Restaurant.create!(stall_name: "Megumi Ramen Stall ", stall_address: "Marina Bay", founded_date: Date.new(1960, 7, 27))
+restaurant2 = Restaurant.create!(stall_name: "Aspirasi", stall_address: "Marina Bay", founded_date: Date.new(1960, 7, 27))
+restaurant3 = Restaurant.create!(stall_name: "Kim's Tapoki", stall_address: "Marina Bay", founded_date: Date.new(1960, 7, 27))
+puts "4 restaurant created"
 #Categories
 halal = Category.create!(name: "Halal")
 korean = Category.create!(name: "Korean")
@@ -5,6 +11,7 @@ japanese = Category.create!(name: "Japanese")
 chinese = Category.create!(name: "Chinese")
 
 puts "4 categories created"
+
 
 #Halal
 halal_product = [
@@ -19,10 +26,12 @@ halal_product = [
 ]
 
 halal_product.each do |p|
-  product = Product.create!(p)
+  product = restaurant.products.create!(p)
   product.categories << halal
 end
 
+
+#restaurant
 puts "8 Halal foods created"
 
 #korean
@@ -42,7 +51,7 @@ korean_product = [
   {name: "Gimbap", description: "Sides/Fried Chicken not from KFC" , price: '1.50'}
 ]
 korean_product.each do |p|
-  product = Product.create!(p)
+  product = restaurant1.products.create!(p)
   product.categories << korean
 end
 
@@ -64,7 +73,7 @@ japan_product = [
   {name: "Chawamushi", description: "Sides/Steamed Egg" , price: '0.50'}
 ]
 japan_product.each do |p|
-  product = Product.create!(p)
+  product = restaurant2.products.create!(p)
   product.categories << japanese
 end
 
@@ -80,7 +89,7 @@ chinese_product = [
   {name: "Siew Mai", description: "Sides" , price: '1.50'},
 ]
 chinese_product.each do |p|
-  product = Product.create!(p)
+  product =restaurant3.products.create!(p)
   product.categories << chinese
 end
 
