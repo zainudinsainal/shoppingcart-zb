@@ -11,9 +11,9 @@
       <p>Categories: <%= category.name %></p>
       <%= link_to 'Add to cart', add_one_product_path(@product.id), method: :put, class: "btn btn-success" %>
     <% if Favourite.find_by(product: @product) %>
-      <%= link_to icon('fas', 'star'), product_unfavorite_path(@product), method: :delete %>
+      <%= link_to icon('fas', 'thumbs-up'), product_unfavorite_path(@product), method: :delete %> 
     <% else %>
-      <%= link_to icon('far', 'star'), product_favourite_path(@product), method: :post %>
+      <%= link_to icon('far', 'thumbs-up'), product_favourite_path(@product), method: :post %>
     <% end %>
       <span>&nbsp;&nbsp;<%= Favourite.count %> recommendation</span>
           <p><%= link_to 'Restaurant page', restaurant_path(@restaurant), class: "btn btn-success" %></p>
@@ -53,9 +53,9 @@
           <%= simple_format review.content %>
           </p>
         <% if Like.find_by(review: review, user: current_user) %>
-          <%= link_to icon('fas', 'thumbs-up'), unlike_product_review_path(@product, review), method: :delete %>
+          <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete %>
         <% else %>
-          <%= link_to icon('far', 'thumbs-up'), like_product_review_path(@product, review), method: :post %>
+          <%= link_to icon('far', 'star'), like_product_review_path(@product, review), method: :post %>
         <% end %>
         <% @product.reviews.each do |review| %>
           <%= review.likes.count %>

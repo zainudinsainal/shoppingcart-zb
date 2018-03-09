@@ -68,9 +68,6 @@ ActiveRecord::Schema.define(version: 20180309111754) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "status", default: 0
-    t.date "order_date", null: false
-    t.decimal "total_price", null: false
-    t.bigint "order_num", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -80,6 +77,7 @@ ActiveRecord::Schema.define(version: 20180309111754) do
   create_table "orders_products", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "product_id"
+    t.integer "quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id", unique: true
@@ -105,6 +103,7 @@ ActiveRecord::Schema.define(version: 20180309111754) do
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_relationships_on_restaurant_id"
     t.index ["user_id"], name: "index_relationships_on_user_id"
+
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -154,6 +153,9 @@ ActiveRecord::Schema.define(version: 20180309111754) do
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "orders_products", "orders"
+  add_foreign_key "orders_products", "products"
+  add_foreign_key "products", "restaurants"
   add_foreign_key "products", "restaurants"
   add_foreign_key "relationships", "restaurants"
   add_foreign_key "relationships", "users"

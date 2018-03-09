@@ -25,14 +25,17 @@ Rails.application.routes.draw do
       delete 'unlike', on: :member, to: 'likes#destroy'
     end
   end
-  
-  #resources :likes
 
+  resources :orders, except: [:edit, :update, :destroy]
   resources :users, only: [:show, :edit, :update]
 
-  resources :categories, only: :show
+
+
+  resources :categories, only: [:show]
 
   resource :cart, only: [:show] 
+
+  
 
 
 
