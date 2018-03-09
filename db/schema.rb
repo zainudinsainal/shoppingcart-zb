@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 20180309111754) do
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_relationships_on_restaurant_id"
     t.index ["user_id"], name: "index_relationships_on_user_id"
-
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -155,7 +154,6 @@ ActiveRecord::Schema.define(version: 20180309111754) do
   add_foreign_key "orders", "users"
   add_foreign_key "orders_products", "orders"
   add_foreign_key "orders_products", "products"
-  add_foreign_key "products", "restaurants"
   add_foreign_key "products", "restaurants"
   add_foreign_key "relationships", "restaurants"
   add_foreign_key "relationships", "users"
