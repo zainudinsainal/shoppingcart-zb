@@ -31,8 +31,12 @@
             <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
-                  <p><%= image_tag product.image, class: "img-fluid rounded mx-auto"%> </p>
-                  <p><%= link_to product.name, product_path(product) %></p>
+                  <p>
+                    <%= link_to product_path(product) do %>
+                      <%= image_tag product.image, class: "img-fluid rounded mx-auto"%> 
+                    <% end %>
+                  </p>
+                  <p><%= product.name %></p>
                   <p><%= category.name %></p>
                   <p><%= number_to_currency(product.price) %></p>
                 </div>
