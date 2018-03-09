@@ -15,7 +15,7 @@
     <% else %>
       <%= link_to icon('far', 'star'), product_favourite_path(@product), method: :post %>
     <% end %>
-      <span>&nbsp;&nbsp;<%= Favourite.count %> likes</span>
+      <span>&nbsp;&nbsp;<%= Favourite.count %> recommendation</span>
 
       <% end %>
     </div>
