@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @restaurant = @product.restaurant
     @review = Review.new
   end
 
@@ -44,6 +45,8 @@ class ProductsController < ApplicationController
     flash[:notice] = 'Product removed from cart'
     redirect_to cart_path
   end
+
+
 
   private
 
