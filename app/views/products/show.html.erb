@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-7 mt-3">
-      
       <%= image_tag @product.image, class: "img-fluid rounded mx-auto"%>
     </div>
     <div class="col-md-5 mt-3">
@@ -24,6 +23,7 @@
   <div class="container">
   <div class="row">
     <div class="col-md-12">
+    <br>
       <h4>Food Reviews</h4>
     <%= form_for [@product, @review] do |f| %>
     <div class="form-group">
@@ -47,15 +47,15 @@
         <div class="card-body">
         
           <small><b><%= review.user.name %></b> Reviewed <%= time_ago_in_words(review.created_at)%> ago</small>
-          <%= simple_format review.content %>
             <% if review.user == current_user %>
-              <%= link_to "Delete", product_review_path(@product, review), method: :delete %>
+              <%= link_to " - Delete", product_review_path(@product, review), method: :delete %>
             <% end %>
+          <%= simple_format review.content %>
           </p>
         <% if Like.find_by(review: review, user: current_user) %>
-          <%= link_to 'Unlike', unlike_product_review_path(@product, review), method: :delete %>
+          <%= link_to icon('fas', 'thumbs-up'), unlike_product_review_path(@product, review), method: :delete %>
         <% else %>
-          <%= link_to 'Like', like_product_review_path(@product, review), method: :post %>
+          <%= link_to icon('far', 'thumbs-up'), like_product_review_path(@product, review), method: :post %>
         <% end %>
         <% @product.reviews.each do |review| %>
           <%= review.likes.count %>
@@ -64,10 +64,6 @@
     </div>
   </div>
     <% end %>
-
-
-
-   
   </div>
   </div>
 </div>
