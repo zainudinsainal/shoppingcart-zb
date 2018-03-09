@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show] do
     post :favourite
-    post :unfavorite
+    delete :unfavorite
     resources :reviews, only: [:create , :destroy] do
       post 'like', on: :member, to: 'likes#create'
       delete 'unlike', on: :member, to: 'likes#destroy'
