@@ -19,8 +19,8 @@ class ProductsController < ApplicationController
 
   def unfavorite
     @product = Product.find(params[:product_id])
-    favorite = Favourite.where(product: @product)
-    favorite.destroy_all
+    favorite = Favourite.find_by(product: @product)
+    favorite.destroy
     redirect_back(fallback_location: root_path)
   end
 
