@@ -11,11 +11,11 @@
       <p>Categories: <%= category.name %></p>
       <%= link_to 'Add to cart', add_to_cart_path(@product.id), method: :put, class: "btn btn-success" %>
     <% if Favourite.find_by(product: @product) %>
-      <%= link_to 'Unfavorite', product_unfavorite_path(@product), method: :delete, class: "btn btn-info" %>
+      <%= link_to icon('far', 'star'), product_unfavorite_path(@product), method: :delete %>
     <% else %>
-      <%= link_to 'Favorite', product_favourite_path(@product), method: :post, class: "btn btn-primary" %>
+      <%= link_to icon('fas', 'star'), product_favourite_path(@product), method: :post %>
     <% end %>
-      <%= Favourite.count %>
+      <span>&nbsp;&nbsp;<%= Favourite.count %> likes</span>
 
       <% end %>
     </div>
