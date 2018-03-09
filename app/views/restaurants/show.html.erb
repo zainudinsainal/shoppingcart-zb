@@ -8,11 +8,12 @@
       <h1>Restaurant</h1>
        <h2><%= @restaurant.stall_name %></h2>
       <div>
-
-      
-        <%# @restaurant.products.each do |product| %>
-          <%# product.name%>
-        <%# end %>
+      <% if Relationship.find_by(user: current_user, restaurant: @restaurant) %>
+        <%= link_to 'Unfollow this Restaurant !', unfollow_restaurant_follow_path(@restaurant), method: :delete, class: "btn btn-success" %>
+      <% else %>      
+        <%= link_to 'Follow this Restaurant !', follow_restaurant_follow_path(@restaurant), method: :post, class: "btn btn-success" %>
+      <% end %>
+        <%= Relationship.count %>
       </div>
       
     </div>
