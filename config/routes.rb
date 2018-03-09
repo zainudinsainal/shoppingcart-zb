@@ -5,9 +5,16 @@ Rails.application.routes.draw do
   devise_for :admins ,path: 'admins' ,controllers: { sessions: "admins/sessions"}
 
   resources :restaurants, only: [:show]
+
   resources :products, only: [:index, :show] do
-      post :favourite
-      delete :unfavorite
+
+    put 'add_one', on: :member
+    put 'remove_from_cart', on: :member
+    put 'remove_one', on: :member
+
+    post :favourite
+    delete :unfavorite
+
     resources :reviews, only: [:create, :destroy] do
       post 'like', on: :member, to: 'likes#create'
       delete 'unlike', on: :member, to: 'likes#destroy'
@@ -20,12 +27,8 @@ Rails.application.routes.draw do
 
   resources :categories, only: :show
 
-  resource :cart, only: [:show] do
-    put 'add/:product_id', to: 'carts#add_to_cart', as: :add_to
-    put 'remove/:product_id', to: 'carts#remove_from_cart', as: :remove_from
-    put 'add_one/:product_id', to: 'carts#add_one', as: :add_one_to
-    put 'remove_one/:product_id', to: 'carts#remove_one', as: :remove_one_from
-  end
+  resource :cart, only: [:show] 
+
 
   root "products#index"
 
