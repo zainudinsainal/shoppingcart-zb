@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-7 mt-3">
@@ -6,16 +5,36 @@
     </div>
     <div class="col-md-5 mt-3">
       <h1>Restaurant</h1>
-       <h2><%= @restaurant.stall_name %></h2>
+       <h4><%= @restaurant.stall_name %></h4>
+       <h5><%= @restaurant.stall_address %></h4>
       <div>
       <% if Relationship.find_by(user: current_user, restaurant: @restaurant) %>
-        <%= link_to 'Unfollow this Restaurant !', unfollow_restaurant_follow_path(@restaurant), method: :delete, class: "btn btn-success" %>
+        <%= link_to 'Unfollow', unfollow_restaurant_follow_path(@restaurant), method: :delete, class: "btn btn-outline-danger" %>
       <% else %>      
-        <%= link_to 'Follow this Restaurant !', follow_restaurant_follow_path(@restaurant), method: :post, class: "btn btn-success" %>
+        <%= link_to 'Join Fellow', follow_restaurant_follow_path(@restaurant), method: :post, class: "btn btn-success" %>
       <% end %>
-        <%= Relationship.count %>
+        <p><%= Relationship.count %> followings</p>
       </div>
       
     </div>
   </div>
+  <div class="row">
+    <% @restaurant.products.each do |product| %>
+      <% product.categories.each do |category| %>
+        <div class="col-md-3 mt-3">
+          <div class="card">
+            <div class="card-body">
+              <%= link_to product_path(product) do %>
+                <%= image_tag product.image, class: "img-fluid rounded mx-auto"%> 
+              <% end %>
+              <p><%= product.name %></p>
+              <p><%= category.name %></p>
+              <p><%= number_to_currency(product.price) %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
  

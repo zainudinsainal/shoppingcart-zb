@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(version: 20180309111754) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.bigint "restaurant_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "restaurant_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_relationships_on_restaurant_id"
@@ -106,9 +106,8 @@ ActiveRecord::Schema.define(version: 20180309111754) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.string "stall_name"
-    t.text "stall_address"
-    t.date "founded_date"
+    t.string "stall_name", null: false
+    t.text "stall_address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

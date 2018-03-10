@@ -1,9 +1,8 @@
 class CreateRestaurants < ActiveRecord::Migration[5.1]
   def change
     create_table :restaurants do |t|
-      t.string :stall_name
-      t.text :stall_address
-      t.date :founded_date
+      t.string :stall_name, null: false
+      t.text :stall_address, null: false
       t.timestamps
     end
   end

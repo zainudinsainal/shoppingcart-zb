@@ -1,8 +1,8 @@
 #Restaurant
-restaurant = Restaurant.create!(stall_name: "Aspirasi", stall_address: "Marina Bay", founded_date: Date.new(1960, 7, 27))
-restaurant1 = Restaurant.create!(stall_name: "Dae Bak Korean BBQ Restaurant ", stall_address: "Marina Bay", founded_date: Date.new(1960, 7, 27))
-restaurant2 = Restaurant.create!(stall_name: "De Oishī Shokuji Authentic Japanese eatery", stall_address: "Marina Bay", founded_date: Date.new(1960, 7, 27))
-restaurant3 = Restaurant.create!(stall_name: "Hao Chi Dim Sum and Noodles", stall_address: "Marina Bay", founded_date: Date.new(1960, 7, 27))
+restaurant = Restaurant.create!(stall_name: "Aspirasi", stall_address: "Marina Bay")
+restaurant1 = Restaurant.create!(stall_name: "Dae Bak Korean BBQ Restaurant ", stall_address: "Marina Bay")
+restaurant2 = Restaurant.create!(stall_name: "De Oishī Shokuji Authentic Japanese eatery", stall_address: "Marina Bay")
+restaurant3 = Restaurant.create!(stall_name: "Hao Chi Dim Sum and Noodles", stall_address: "Marina Bay")
 puts "4 restaurant created"
 #Categories
 halal = Category.create!(name: "Halal")
