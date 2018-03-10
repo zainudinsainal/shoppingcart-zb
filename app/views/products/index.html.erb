@@ -12,12 +12,6 @@
         </div>
         <br>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <p>Filters</p>
-        </div>
-        <br>
-      </div>
     </div>
     <div class="col-md-9 mt-1">
     <nav aria-label="breadcrumb">
@@ -36,7 +30,7 @@
                       <%= image_tag product.image, class: "img-fluid rounded mx-auto"%> 
                     <% end %>
                   </p>
-                  <p><%= product.name %></p>
+                  <p><%= link_to product.name, product_path(product) %></p>
                   <p><%= category.name %></p>
                   <p><%= number_to_currency(product.price) %></p>
                 </div>
