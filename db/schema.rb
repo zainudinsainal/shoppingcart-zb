@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309111754) do
+ActiveRecord::Schema.define(version: 20180309152534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,16 @@ ActiveRecord::Schema.define(version: 20180309111754) do
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
+  create_table "replies", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "user_id"
+    t.bigint "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_replies_on_review_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "stall_name", null: false
     t.text "stall_address", null: false
@@ -157,6 +167,8 @@ ActiveRecord::Schema.define(version: 20180309111754) do
   add_foreign_key "products", "restaurants"
   add_foreign_key "relationships", "restaurants"
   add_foreign_key "relationships", "users"
+  add_foreign_key "replies", "reviews"
+  add_foreign_key "replies", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
 end

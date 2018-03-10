@@ -45,12 +45,19 @@
   <div class="col-md-10">
       <div class="card">
         <div class="card-body">
-        
           <small><b><%= review.user.name %></b> Reviewed <%= time_ago_in_words(review.created_at)%> ago</small>
             <% if review.user == current_user %>
               <%= link_to " - Delete", product_review_path(@product, review), method: :delete %>
             <% end %>
           <%= simple_format review.content %>
+          <p><%=review.replies.count %> replies</p>
+          <%=review.replies.each do |reply| %>
+            <%=form_for [@product, review, reply] do |f| %>   
+              <%= f.text_area :body, placeholder: "Pls reply here !", class: "form-control" %>
+              <%= f.submit %>
+            <% end %>
+          <% end %>
+          
           </p>
         <% if Like.find_by(review: review, user: current_user) %>
           <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete %>
@@ -59,7 +66,11 @@
         <% end %>
         <% @product.reviews.each do |review| %>
           <%= review.likes.count %>
+          
         <% end %>
+
+
+
       </div>
     </div>
   </div>
