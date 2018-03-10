@@ -1,15 +1,14 @@
-<div class="container">
+<div class="container mt-5">
     <h1>My Followings</h1>
   <div class="row">
     <% @user.relationships.each do |relationship| %>
-        <div class="col-md-4 mt-3">
-          <div class="card">
-            <div class="card-body">
-              <%= link_to restaurant_path(relationship.restaurant) do %>
-                <p><%= image_tag relationship.restaurant.picture, class: "img-fluid rounded mx-auto"%> </p>
-              <% end %>
-              <br>
-              <p><%= relationship.restaurant.stall_name %></p>
+        <div class="col-md-6 mt-3">
+          <div class="card flex-md-row">
+            <p><%= link_to restaurant_path(relationship.restaurant) do %>
+                <%= image_tag relationship.restaurant.picture, class: "mt-3 card-img-left picture"%> 
+              <% end %></p>
+            <div class="card-body d-flex flex-column align-items-start">
+              <h5><%= link_to relationship.restaurant.stall_name, restaurant_path(relationship.restaurant) %></h5>
               <p><small>Followed <%= time_ago_in_words(relationship.created_at) %> ago</small> </p>
             </div>
           </div>
