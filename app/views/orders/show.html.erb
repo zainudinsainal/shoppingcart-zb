@@ -1,48 +1,45 @@
 <div class="container mt-5">
   <div class="row justify-content-center mt-5">
-    <div class="col-7">
-      <p><%= link_to 'Back', orders_path %></p>
-      <h4>Order No: <strong><%= "##{sprintf('%09d', @order.id)}" %></strong></h4>
-      <p>Status: <%= @order.status.capitalize %></p>
-      <p>Date ordered: <%= @order.created_at.strftime('%-d %b %Y') %></p>
-      <p>Shipping Address: <%= @order.user.address %></p>
-    </div>
-    <div class="row-mt-3">
     <div class="col-6">
-      <table class="table table-light">
-        <thead>
-          <tr>
-            <th scope="col">Product</th>
-            <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @order.orders_products.each do |order_product|%>
-            <tr>
-              <td><%= link_to order_product.product.name, product_path(order_product.product) %></td>
-              <td><%= number_to_currency(order_product.product.price) %></td>
-              <td><%= order_product.quantity%></td>
-              <td><%= number_to_currency(order_product.quantity * order_product.product.price) %></td>
-            </tr>
-            <% end %>
-            <tr>
-              <td colspan='4'></td>
-              <td colspan='1'>Grand Total:</td>
-              <% total_price = @order.orders_products.reduce(0) do |sum, order_product| %>
-               <% sum + (order_product.product.price * order_product.quantity)  %>  
-            <% end %>
-              <td><%= number_to_currency(total_price) %></td>
-            </tr>
-        </tbody>
-      </table>
+      <div class="card">
+        <div class="card-body">
+          <h4>Order No: <strong><%= "##{sprintf('2017%05d', @order.id)}" %></strong></h4>
+          <p>Date ordered: <%= @order.created_at.strftime('%-d %b %Y') %></p>
+          <p>Delivery Address: <%= @order.user.address %></p>
+          <p>Status: <%= @order.status.capitalize %></p>
+        </div>
+      </div>
     </div>
   </div>
-
-
+    <div class="row justify-content-center mt-3">
+      <div class="col-6">
+        <table class="table table-light">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order.orders_products.each do |order_product|%>
+              <tr>
+                <td><%= link_to order_product.product.name, product_path(order_product.product) %></td>
+                <td><%= number_to_currency(order_product.product.price) %></td>
+                <td><%= order_product.quantity%></td>
+                <td><%= number_to_currency(order_product.quantity * order_product.product.price) %></td>
+              </tr>
+              <% end %>
+              <tr>
+                <% total_price = @order.orders_products.reduce(0) do |sum, order_product| %>
+                <% sum + (order_product.product.price * order_product.quantity)  %>  
+                <% end %>
+                <td colspan='4' class="text-right"><h5>Grand Total: <%= number_to_currency(total_price) %></h5></td>
+              </tr>
+          </tbody>
+        </table>
+      <p><%= link_to 'My Orders', orders_path, class: "btn btn-success" %></p>
+    </div>
   </div>
-
-
-
 </div>

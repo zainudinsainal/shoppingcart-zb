@@ -18,32 +18,33 @@
               </thead>
               <tbody>
                 <% @cart_items.each do |product_id, quantity|%>
-                <tr>
+                  <tr>
                     <% product = Product.find(product_id) %>
                     <td><%= link_to product.name, product_path(product_id)  %></td>
                     <td><%= number_to_currency(product.price) %></td>
-                    <td><%= link_to '-', remove_one_product_path(product), method: :put %></td>
+                    <td><%= link_to icon('fas', 'minus'), remove_one_product_path(product), method: :put %></td>
                     <td><%= quantity %></td>
-                    <td><%= link_to '+', add_one_product_path(product), method: :put %></td>
+                    <td><%= link_to icon('fas', 'plus'), add_one_product_path(product), method: :put %></td>
                     <td><%= number_to_currency(product.price * quantity.to_i) %></td>
-                    <td><%= link_to 'Remove Food', remove_from_cart_product_path(product), method: :put %></td>
-                  <% end %>
-                </tr>
+                    <td><%= link_to icon('far', 'trash-alt'), remove_from_cart_product_path(product), method: :put %></td>
+                  </tr>
+                <% end %>
               </tbody>
             </table>
-            <%= link_to "Checkout", orders_path, method: :post, class: 'btn btn-success btn-block' %>
+             <% total_price = @cart_items.reduce(0) do |sum, (product_id, quantity)| %>
+              <% product = Product.find(product_id) %>
+               <% sum + (product.price * quantity.to_i)  %>  
+               <% end %>
+               <div class="d-flex justify-content-end">
+                <h4 class="text-left">Grand total: <b><%= number_to_currency(total_price) %></b></h4>
+               </div>
+               <div class="d-flex justify-content-end mt-2">
+            <%= link_to "Food List", root_path, class: 'btn btn-info ' %>&nbsp;&nbsp;&nbsp;
+            <%= link_to "Checkout", orders_path, method: :post, class: 'btn btn-success ' %>
+            </div>
           <% else %>
           <p> Your cart is empty</p>
           <% end %>
-          </div>
-          <% if @cart_items && !@cart_items.empty? %>
-          <div class="col-3 d-flex flex-column.align-items-center">
-            <% total_price = @cart_items.reduce(0) do |sum, (product_id, quantity)| %>
-              <% product = Product.find(product_id) %>
-               <% sum + (product.price * quantity.to_i)  %>  
-            <% end %>
-            <h4>Grand total: <b><%= number_to_currency(total_price) %></b></h4>
-          <% end%>
           </div>
         </div>
       </div>

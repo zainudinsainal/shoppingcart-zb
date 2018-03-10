@@ -2,7 +2,7 @@ class Admin::CategoriesController < ApplicationController
 
   layout 'admin'
   before_action :authenticate_admin!
-  before_action :set_category, only:  [:update, :destroy]
+  before_action :set_category, only:  [:update, :destroy, :edit]
 
   def index
     @categories = Category.all
@@ -11,6 +11,9 @@ class Admin::CategoriesController < ApplicationController
     else
       @category = Category.new
     end
+  end
+
+  def edit
   end
 
   def create
