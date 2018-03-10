@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>My Followings</h1>
+  <div class="row">
+    <% @user.relationships.each do |relationship| %>
+        <div class="col-md-4 mt-3">
+          <div class="card">
+            <div class="card-body">
+              <%# link_to relationship_path(product) do %>
+                <%# image_tag product.image, class: "img-fluid rounded mx-auto"%> 
+              <%# end %>
+              <p><%= link_to relationship.restaurant.stall_name, restaurant_path(relationship.restaurant) %></p>
+              <p><small>Followed <%= time_ago_in_words(relationship.created_at) %> ago</small> </p>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+ 

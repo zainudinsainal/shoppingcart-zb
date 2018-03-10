@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.decimal :price, null: false, precision: 10, scale: 2
       t.text :description, null: false
       t.string :image, default: ""
-      t.belongs_to :restaurant, foreign_key: true
+      t.references :restaurant, foreign_key: true
       t.timestamps
     end
   end
