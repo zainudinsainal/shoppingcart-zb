@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <div class="row justify-content-center mt-5">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h4>Order No: <strong><%= "##{sprintf('2017%05d', @order.id)}" %></strong></h4>
+          <p>Date ordered: <%= @order.created_at.strftime('%-d %b %Y') %></p>
+          <p>Delivery Address: <%= @order.user.address %></p>
+          <%= form_for [:admin, @order] do |f| %>
+            <div class="form-group">
+              <%= f.label :status, "Status:" %><br>
+              <% Order.statuses.keys.each do |status| %>
+                <%= f.radio_button :status, status %>
+                <%= f.label status.to_sym %>
+              <% end %>
+              <br><br>
+              <%= link_to 'Order Page', admin_orders_path, class: "btn btn-info" %>
+              <%= f.submit class: "btn btn-primary mr-2" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-6">
+      <table class="table table-light">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.orders_products.each do |order_product|%>
+            <tr>
+              <td><%= link_to order_product.product.name, product_path(order_product.product) %></td>
+              <td><%= number_to_currency(order_product.product.price) %></td>
+              <td><%= order_product.quantity%></td>
+              <td><%= number_to_currency(order_product.quantity * order_product.product.price) %></td>
+            </tr>
+            <% end %>
+            <tr>
+              <% total_price = @order.orders_products.reduce(0) do |sum, order_product| %>
+              <% sum + (order_product.product.price * order_product.quantity)  %>  
+              <% end %>
+              <td colspan='4' class="text-right"><h5>Grand Total: <%= number_to_currency(total_price) %></h5></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

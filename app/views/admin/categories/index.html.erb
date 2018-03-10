@@ -1,16 +1,17 @@
 <div class="container">
   <h1>Food categories</h1>
   <div>
-    <%= link_to 'Products', admin_products_path %> |
-    <%= link_to 'Categories', admin_categories_path %> |
-    <%= link_to 'Restaurant', admin_restaurants_path %>  
+    <%= link_to 'Food', admin_products_path %> |
+    <%= link_to 'Categories', admin_categories_path %> | 
+    <%= link_to 'Restaurant', admin_restaurants_path %> |
+    <%= link_to 'Orders', admin_orders_path %> 
   </div>
   <br>
   <div class="form-inline" >
     <%= form_for [:admin, @category] do |f| %>
       <div class="form-group">
         <%= f.text_field :name, placeholder: "Category Name",  class: "form-control mr-2" %>
-      <%= f.submit class: "btn btn-primary mr-2" %>
+        <%= f.submit class: "btn btn-primary mr-2" %>
       <% if @category.errors.any? %>
         <%= @category.errors.full_messages.to_sentence %>
       <% end %>

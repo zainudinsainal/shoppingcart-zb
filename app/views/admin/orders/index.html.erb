@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Order</h1>
+      <div>
+        <%= link_to 'Food', admin_products_path %> |
+        <%= link_to 'Categories', admin_categories_path %> | 
+        <%= link_to 'Restaurant', admin_restaurants_path %> |
+        <%= link_to 'Orders', admin_orders_path %>  
+      </div>
+      <br>
+      <div>
+      </div>
+      <br>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Orders</th>
+            <th scope="col">Date ordered</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <th scope="row"><%= link_to "##{sprintf('2017%05d', order.id)}", admin_order_path(order)  %></th>
+              <td><%= order.user.name %></td>
+              <td><%= order.created_at.strftime('%-d %b %Y') %></td>
+              <td><%= order.status.capitalize %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

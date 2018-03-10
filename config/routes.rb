@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   root "products#index"
   
   devise_for :users ,path: 'users' ,controllers: { sessions: "users/sessions"}
@@ -28,22 +28,19 @@ Rails.application.routes.draw do
   end
 
   resources :orders, except: [:edit, :update, :destroy]
+
   resources :users, only: [:show, :edit, :update]
-
-
 
   resources :categories, only: [:show]
 
   resource :cart, only: [:show] 
 
-  
-
-
-
   namespace :admin do
     resources :products
     resources :categories
     resources :restaurants
+    resources :orders, only: [:index, :show, :update]
+    resources :reviews, only: [:index, :destroy]
     root "products#index"
   end
 
