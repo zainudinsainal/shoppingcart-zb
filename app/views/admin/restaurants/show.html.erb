@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 mt-3">
+      <%= image_tag @product.image, class: "img-fluid rounded mx-auto"%>
+    </div>
+    <div class="col-md-5 mt-3">
+          <p>Name: <%= @product.name %></p>
+          <p>Price: <%= number_to_currency(@product.price) %></p>
+          <p>Description: <%= @product.description %></p>
+          <% @product.categories.each do |category| %>
+            <p>Categories: <%= category.name %></p>
+          <% end %>
+    </div>
+  <%= link_to 'Back to index', admin_products_path %>
+
+  
+</div>
