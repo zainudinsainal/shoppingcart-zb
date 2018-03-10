@@ -2,27 +2,27 @@ class Admin::RestaurantsController < ApplicationController
 
   layout 'admin'
   before_action :authenticate_admin!
-  before_action :set_product, only:  [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only:  [:show, :edit, :update, :destroy]
 
 
   def index
-    @products = Product.all
-    @categories = Category.all
+    @restaurants = Restaurant.all
+
   end
 
   def new
-    @product = Product.new
+    @restaurant = Restaurant.new
   end
 
    def create
 
-    @product = Product.new(product_params)
+    @restaurant = Restaurant.new(restaurant_params)
     
-    if @product.save
-      flash[:notice] = "Food was successfully created"
-      redirect_to admin_products_path
+    if @restaurant.save
+      flash[:notice] = "Restaurant was successfully created"
+      redirect_to admin_restaurants_path
     else
-      flash.now[:alert] = "Food was failed to create"
+      flash.now[:alert] = "Restaurant was failed to create"
       render :new
     end
   end
@@ -34,29 +34,29 @@ class Admin::RestaurantsController < ApplicationController
   end
 
   def update
-    if @product.update(product_params)
-      flash[:notice] = "Food was successfully updated"
-      redirect_to admin_product_path(@product)
+    if @restaurant.update(restaurant_params)
+      flash[:notice] = "Restaurant was successfully updated"
+      redirect_to admin_restaurant_path(@restaurant)
     else
-      flash.now[:alert] = "Food was failed to update"
+      flash.now[:alert] = "Restaurant was failed to update"
       render :edit
     end
   end
 
   def destroy
-    @product.destroy
-    flash[:alert] = "Food was deleted"
-    redirect_to admin_products_path
+    @restaurant.destroy
+    flash[:alert] = "Restaurant was deleted"
+    redirect_to admin_restaurants_path
   end
 
   private
 
-  def product_params
-    params.require(:product).permit(:name, :price, :image, :description, :category_ids)
+  def restaurant_params
+    params.require(:restaurant).permit(:stall_name, :stall_address, :picture)
   end
 
-  def set_product
-    @product = Product.find(params[:id])
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
   end
-  
+
 end

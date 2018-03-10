@@ -1,4 +1,4 @@
-<% if @product.errors.any? %>
+<% if @restaurant.errors.any? %>
   <div class="container ">
     <div class="row d-flex justify-content-center">
       <div class="alert alert-info col-md-6" role="alert">
@@ -30,11 +30,12 @@
                 </div>
 
                 <div class="form-group">
-                  <%= f.label :stall_address "Address" %>
+                  <%= f.label :stall_address, "Address" %>
                   <%= f.text_area :stall_address, rows: 3, class: "form-control"  %>
                 </div>
 
                 <div class="form-group">
+                  <%= f.label :picture, "Add a picture" %> <br>
                   <%= f.file_field :picture %>
                 </div>
 
