@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     delete :unfavorite
 
     resources :reviews, only: [:create, :destroy] do
-      resources :reply, only: [:create, :destroy]
+      resources :reply, only: [:create, :destroy, :index]
       post 'like', on: :member, to: 'likes#create'
       delete 'unlike', on: :member, to: 'likes#destroy'
     end

@@ -9,9 +9,10 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    #byebug
     @restaurant = @product.restaurant
     @review = Review.new
-    
+    @review_find = Review.find_by(params[:review_id])
   end
 
   def favourite
@@ -53,6 +54,10 @@ class ProductsController < ApplicationController
 
   def favourite_params
     params.require(:favourite).permit(:product_id, :user_id)
+  end
+
+  def review_params
+    params.require(:review).permit(:content, :image_review)
   end
 
 end

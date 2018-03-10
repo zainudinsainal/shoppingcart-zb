@@ -51,14 +51,13 @@
             <% end %>
           <%= simple_format review.content %>
           <p><%=review.replies.count %> replies</p>
-          <%=review.replies.each do |reply| %>
-            <%=form_for [@product, review, reply] do |f| %>   
-              <%= f.text_area :body, placeholder: "Pls reply here !", class: "form-control" %>
-              <%= f.submit %>
+          <% review.replies.each do |reply| %>
+            <p><%= review.user.name %>: <%= reply.body %></p>
+            <% if review.user == current_user %>
+              <%= link_to " - Delete", product_review_reply_path(@product, review, reply), method: :delete %>
             <% end %>
           <% end %>
-          
-          </p>
+            <p><%= link_to "Leave a reply", product_review_reply_index_path(@product, review) %></p>
         <% if Like.find_by(review: review, user: current_user) %>
           <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete %>
         <% else %>
