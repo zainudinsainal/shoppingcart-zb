@@ -1,17 +1,9 @@
-class ReplyController < ApplicationController
-  def index
-    @replies = Reply.all
-    @review = Review.find(params[:review_id])
-    @reply = Reply.new
-  end
+class RepliesController < ApplicationController
 
   def new
     @reply = Reply.new
-  end
-
-  def show
-    review = Review.find(params[:review_id])
-    @replies = Reply.find(user: current_user, review: review )
+    @review = Review.find(params[:review_id])
+    @product = Product.find(params[:product_id])
   end
 
   def create
@@ -36,10 +28,6 @@ class ReplyController < ApplicationController
 
   def reply_params
     params.require(:reply).permit(:body)
-  end
-
-  def review_params
-    params.require(:review).permit(:content, :image_review)
   end
 
 end

@@ -35,54 +35,27 @@
       <% end %>
     </div><br>
     <% @product.reviews.each do |review| %>
-      <div class="col-md-2">
+      <div class="col-md-2 mt-3">
         <%= image_tag review.image_review, class: "img-fluid rounded mx-auto picture" %>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-10 mt-3">
         <div class="card">
           <div class="card-body">
-            <small><b><%= review.user.name %></b> Reviewed <%= time_ago_in_words(review.created_at)%> ago</small>
+            <small><b><%= review.user.name %></b> Reviewed <%= time_ago_in_words(review.created_at)%> ago</small>&nbsp;&nbsp;
               <% if review.user == current_user %>
-                <%= link_to " - Delete", product_review_path(@product, review), method: :delete %>
+                <%= link_to icon('far', 'trash-alt'), product_review_path(@product, review), method: :delete %>
               <% end %>
-            <%= simple_format review.content %>
-            <p><%=review.replies.count %> replies</p>
-            <%=review.replies.each do |reply| %>
-              <%=form_for [@product, review, reply] do |f| %>   
-                <%= f.text_area :body, placeholder: "Pls reply here !", class: "form-control" %>
-                <%= f.submit %>
-              <% end %>
-            <% end %>
-
+              <%= simple_format review.content %>
             <% if Like.find_by(review: review, user: current_user) %>
               <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete %>
             <% else %>
               <%= link_to icon('far', 'star'), like_product_review_path(@product, review), method: :post %>
             <% end %>
-            <% @product.reviews.each do |review| %>
-              <%= review.likes.count %>
-            <% end %>
+              <%= review.likes.count %>&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= link_to icon('far', 'comment'), new_product_review_reply_path(@product, review) %>
+              <%=review.replies.count %>
           </div>
         </div>
-          <%= simple_format review.content %>
-          <p><%=review.replies.count %> replies</p>
-          <% review.replies.each do |reply| %>
-            <p><%= review.user.name %>: <%= reply.body %></p>
-            <% if review.user == current_user %>
-              <%= link_to " - Delete", product_review_reply_path(@product, review, reply), method: :delete %>
-            <% end %>
-          <% end %>
-            <p><%= link_to "Leave a reply", product_review_reply_index_path(@product, review) %></p>
-        <% if Like.find_by(review: review, user: current_user) %>
-          <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete %>
-        <% else %>
-          <%= link_to icon('far', 'star'), like_product_review_path(@product, review), method: :post %>
-        <% end %>
-        <% @product.reviews.each do |review| %>
-          <%= review.likes.count %>
-          
-        <% end %>
-
       </div>
     <% end %>
   </div>
