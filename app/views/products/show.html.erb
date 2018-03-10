@@ -8,73 +8,62 @@
       <h4><%= number_to_currency(@product.price) %></h4>
       <h5><%= @product.description %></h5>
       <% @product.categories.each do |category| %>
-      <h6><%= category.name %></h6>
-      <%= link_to 'Restaurant Info', restaurant_path(@restaurant), class: "btn btn-info" %>&nbsp;&nbsp;
-      <%= link_to 'Add to cart', add_one_product_path(@product.id), method: :put, class: "btn btn-success" %>
-      <br><br>
-    <% if Favourite.find_by(product: @product) %>
-      <p>&nbsp;&nbsp;<%= link_to icon('fas', 'thumbs-up'), product_unfavorite_path(@product), method: :delete %> <span>&nbsp;&nbsp;<%= Favourite.count %> recommendation</span></p>
-    <% else %>
-      <p>&nbsp;&nbsp;<%= link_to icon('far', 'thumbs-up'), product_favourite_path(@product), method: :post %> <span>&nbsp;&nbsp;<%= Favourite.count %> recommendation</span></p>
-    <% end %>
-    <% end %>
-    </div>
-  </div>
-  <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-    <br>
-      <h4>Food Reviews</h4>
-    <%= form_for [@product, @review] do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, placeholder: "Pls write a review and post a picture about the food !", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit class: "btn btn-primary" %>
-      <%= f.file_field :image_review %>
-
-    </div>
-  <% end %>
-  </div>
-
-  <br>
-    <% @product.reviews.each do |review| %>
-  <div class="col-md-2">
-    <%= image_tag review.image_review, class: "img-fluid rounded mx-auto picture" %>
-  </div>
-  <div class="col-md-10">
-      <div class="card">
-        <div class="card-body">
-          <small><b><%= review.user.name %></b> Reviewed <%= time_ago_in_words(review.created_at)%> ago</small>
-            <% if review.user == current_user %>
-              <%= link_to " - Delete", product_review_path(@product, review), method: :delete %>
-            <% end %>
-          <%= simple_format review.content %>
-          <p><%=review.replies.count %> replies</p>
-          <%=review.replies.each do |reply| %>
-            <%=form_for [@product, review, reply] do |f| %>   
-              <%= f.text_area :body, placeholder: "Pls reply here !", class: "form-control" %>
-              <%= f.submit %>
-            <% end %>
-          <% end %>
-          
-          </p>
-        <% if Like.find_by(review: review, user: current_user) %>
-          <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete %>
+        <h6><%= category.name %></h6>
+        <%= link_to 'Restaurant Info', restaurant_path(@restaurant), class: "btn btn-info" %>&nbsp;&nbsp;
+        <%= link_to 'Add to cart', add_one_product_path(@product.id), method: :put, class: "btn btn-success" %>
+        <br><br>
+        <% if Favourite.find_by(product: @product) %>
+          <p>&nbsp;&nbsp;<%= link_to icon('fas', 'thumbs-up'), product_unfavorite_path(@product), method: :delete %> <span>&nbsp;&nbsp;<%= Favourite.count %> recommendation</span></p>
         <% else %>
-          <%= link_to icon('far', 'star'), like_product_review_path(@product, review), method: :post %>
+          <p>&nbsp;&nbsp;<%= link_to icon('far', 'thumbs-up'), product_favourite_path(@product), method: :post %> <span>&nbsp;&nbsp;<%= Favourite.count %> recommendation</span></p>
         <% end %>
-        <% @product.reviews.each do |review| %>
-          <%= review.likes.count %>
-          
-        <% end %>
-
-
-
-      </div>
+      <% end %>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12"><br>
+      <h4>Food Reviews</h4>
+      <%= form_for [@product, @review] do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, placeholder: "Pls write a review and post a picture about the food !", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary" %>
+          <%= f.file_field :image_review %>
+        </div>
+      <% end %>
+    </div><br>
+    <% @product.reviews.each do |review| %>
+      <div class="col-md-2">
+        <%= image_tag review.image_review, class: "img-fluid rounded mx-auto picture" %>
+      </div>
+      <div class="col-md-10">
+        <div class="card">
+          <div class="card-body">
+            <small><b><%= review.user.name %></b> Reviewed <%= time_ago_in_words(review.created_at)%> ago</small>
+              <% if review.user == current_user %>
+                <%= link_to " - Delete", product_review_path(@product, review), method: :delete %>
+              <% end %>
+            <%= simple_format review.content %>
+            <p><%=review.replies.count %> replies</p>
+            <%=review.replies.each do |reply| %>
+              <%=form_for [@product, review, reply] do |f| %>   
+                <%= f.text_area :body, placeholder: "Pls reply here !", class: "form-control" %>
+                <%= f.submit %>
+              <% end %>
+            <% end %>
+            <% if Like.find_by(review: review, user: current_user) %>
+              <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete %>
+            <% else %>
+              <%= link_to icon('far', 'star'), like_product_review_path(@product, review), method: :post %>
+            <% end %>
+            <% @product.reviews.each do |review| %>
+              <%= review.likes.count %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </div>
   </div>
 </div>
