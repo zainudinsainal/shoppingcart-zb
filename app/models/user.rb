@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :reviews
+  has_many :replies
   has_many :likes
   has_many :relationships
 

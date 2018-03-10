@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @restaurant = @product.restaurant
     @review = Review.new
+    
   end
 
   def favourite
