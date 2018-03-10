@@ -37,8 +37,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :products
-    resources :categories
     resources :restaurants
+    resources :categories, except: [:show, :new]
     resources :orders, only: [:index, :show, :update]
     resources :reviews, only: [:index, :destroy]
     root "products#index"

@@ -1,10 +1,11 @@
 <div class="container">
-  <h1>Food categories</h1>
+  <h1>Categories</h1>
   <div>
     <%= link_to 'Food', admin_products_path %> |
     <%= link_to 'Categories', admin_categories_path %> | 
     <%= link_to 'Restaurant', admin_restaurants_path %> |
-    <%= link_to 'Orders', admin_orders_path %> 
+    <%= link_to 'Orders', admin_orders_path %> |
+    <%= link_to 'Food Reviews', admin_reviews_path %>  
   </div>
   <br>
   <div class="form-inline" >
@@ -26,7 +27,7 @@
           <tr>
             <th>#</th>
             <th>Category Name</th>
-            <th>#</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
