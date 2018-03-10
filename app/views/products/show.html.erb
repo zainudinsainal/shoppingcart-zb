@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-7 mt-3">
+    <div class="col-md-3 my-3">
       <%= image_tag @product.image, class: "img-fluid rounded mx-auto"%>
     </div>
-    <div class="col-md-5 mt-3">
-      <p>Name: <%= @product.name %></p>
-      <p>Price: <%= number_to_currency(@product.price) %></p>
-      <p>Description: <%= @product.description %></p>
+    <div class="col-md-8 offset-md-1 my-3">
+      <h1><%= @product.name %></h1>
+      <h4><%= number_to_currency(@product.price) %></h4>
+      <h5><%= @product.description %></h5>
       <% @product.categories.each do |category| %>
-      <p>Categories: <%= category.name %></p>
+      <h6><%= category.name %></h6>
       <%= link_to 'Restaurant Info', restaurant_path(@restaurant), class: "btn btn-info" %>&nbsp;&nbsp;
       <%= link_to 'Add to cart', add_one_product_path(@product.id), method: :put, class: "btn btn-success" %>
       <br><br>

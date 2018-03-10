@@ -2,14 +2,14 @@
     <h1>My Followings</h1>
   <div class="row">
     <% @user.relationships.each do |relationship| %>
-        <div class="col-md-4 mt-3">
+        <div class="col-md-3 mt-3">
           <div class="card">
             <div class="card-body">
               <%= link_to restaurant_path(relationship.restaurant) do %>
-                <p><%= image_tag relationship.restaurant.picture, class: "img-fluid rounded mx-auto"%> </p>
+                <p><%= image_tag relationship.restaurant.picture, class: "card-img-top"%> </p>
               <% end %>
               <br>
-              <p><%= relationship.restaurant.stall_name %></p>
+              <h5><%= link_to relationship.restaurant.stall_name, restaurant_path(relationship.restaurant) %></h5>
               <p><small>Followed <%= time_ago_in_words(relationship.created_at) %> ago</small> </p>
             </div>
           </div>

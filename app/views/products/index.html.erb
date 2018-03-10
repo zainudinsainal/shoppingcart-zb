@@ -25,14 +25,14 @@
             <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
-                  <p>
-                    <%= link_to product_path(product) do %>
-                      <%= image_tag product.image, class: "img-fluid rounded mx-auto"%> 
-                    <% end %>
-                  </p>
-                  <p><%= link_to product.name, product_path(product) %></p>
-                  <p><%= category.name %></p>
-                  <p><%= number_to_currency(product.price) %></p>
+                  <p><%= link_to product_path(product) do %>
+                  <%= image_tag product.image, class: "card-img-top" %> 
+                <% end %></p>
+                  <h6 class="card-title text-center"><%= link_to product.name, product_path(product) %></h6>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                  <h5 class="text-muted"><%= category.name %></h5> 
+                  <h5><%= number_to_currency(product.price) %></h5>
                 </div>
               </div>
             </div>
