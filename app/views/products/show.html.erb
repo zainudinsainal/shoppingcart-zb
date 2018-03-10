@@ -53,6 +53,7 @@
                 <%= f.submit %>
               <% end %>
             <% end %>
+
             <% if Like.find_by(review: review, user: current_user) %>
               <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete %>
             <% else %>
@@ -63,6 +64,25 @@
             <% end %>
           </div>
         </div>
+          <%= simple_format review.content %>
+          <p><%=review.replies.count %> replies</p>
+          <% review.replies.each do |reply| %>
+            <p><%= review.user.name %>: <%= reply.body %></p>
+            <% if review.user == current_user %>
+              <%= link_to " - Delete", product_review_reply_path(@product, review, reply), method: :delete %>
+            <% end %>
+          <% end %>
+            <p><%= link_to "Leave a reply", product_review_reply_index_path(@product, review) %></p>
+        <% if Like.find_by(review: review, user: current_user) %>
+          <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete %>
+        <% else %>
+          <%= link_to icon('far', 'star'), like_product_review_path(@product, review), method: :post %>
+        <% end %>
+        <% @product.reviews.each do |review| %>
+          <%= review.likes.count %>
+          
+        <% end %>
+
       </div>
     <% end %>
   </div>

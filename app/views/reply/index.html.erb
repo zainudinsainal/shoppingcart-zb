@@ -1,0 +1,15 @@
+<h1>Hi</h1>
+
+<%# @review.each do |review| %>
+<p><%= @review.content %></p>
+
+<p><h4>Leave a reply !</h4>
+    <%= form_for @reply, url: {controller: "reply", action: "create"} do |f| %>
+    <div class="form-group">
+      <%= f.text_area :body, placeholder: "Pls leave a reply !", class: "form-control", method: :post %>
+    </div>
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+      <%# Reply.all.body %>
+    </div>
+<% end %>
