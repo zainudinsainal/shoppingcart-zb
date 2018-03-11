@@ -26,7 +26,7 @@
         <div class="card-body">
           <p><small><b>@<%= reply.user.name %></b> Replied <%= time_ago_in_words(reply.created_at)%> ago</small></p>
           <p><%= icon('far', 'comment-alt') %>&nbsp;&nbsp;<%= reply.body %>&nbsp;&nbsp;</p>
-          <% if @review.user == current_user %>
+          <% if reply.user == current_user %>
             <%= link_to icon('far', 'trash-alt'), product_review_reply_path(@product, @review, reply), method: :delete %>
           <% end %>
         </div>
