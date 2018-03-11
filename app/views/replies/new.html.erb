@@ -28,6 +28,14 @@
           <p><%= icon('far', 'comment-alt') %>&nbsp;&nbsp;<%= reply.body %>&nbsp;&nbsp;</p>
           <% if reply.user == current_user %>
             <%= link_to icon('far', 'trash-alt'), product_review_reply_path(@product, @review, reply), method: :delete %>
+          <%if ReplyLike.find_by(reply: reply, user: current_user) %>
+              <%= link_to icon('fas', 'star'), runlike_product_review_reply_path(@product, @review, reply), method: :delete %>
+            <% else %>
+              <%= link_to icon('far', 'star'), rlike_product_review_reply_path(@product, @review, reply), method: :post %>
+            <% end %>
+              <%= reply.reply_likes.count %>&nbsp;&nbsp;&nbsp;&nbsp;
+              <%# link_to icon('far', 'comment'), new_product_review_reply_path(@product, review) %>
+              <%#@review.replies.count %>
           <% end %>
         </div>
       </div>

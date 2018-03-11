@@ -22,8 +22,8 @@ Rails.application.routes.draw do
 
     resources :reviews, only: [:create, :destroy] do
       resources :replies, only: [:new, :create, :destroy] do
-        post 'reply_like', on: :member, to: 'replylikes#create'
-        delete 'reply_unlike', on: :member, to: 'replylikes#destroy'
+        post 'rlike', on: :member, to: 'reply_likes#create'
+        delete 'runlike', on: :member, to: 'reply_likes#destroy'
       end
       post 'like', on: :member, to: 'likes#create'
       delete 'unlike', on: :member, to: 'likes#destroy'
