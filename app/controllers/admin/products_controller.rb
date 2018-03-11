@@ -17,6 +17,8 @@ class Admin::ProductsController < ApplicationController
    def create
 
     @product = Product.new(product_params)
+    params[:product][:category_ids].delete("")
+    @product.update_attribute(:category_ids, params[:product][:category_ids].join(","))
     
     if @product.save
       flash[:notice] = "Food was successfully created"
