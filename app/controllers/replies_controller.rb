@@ -10,7 +10,6 @@ class RepliesController < ApplicationController
     @product = Product.find(params[:product_id])
     @review = Review.find(params[:review_id])
     @reply = @review.replies.create(reply_params)
-    #byebug
     @reply.user = current_user
     @reply.save
     redirect_to product_path(@product)
