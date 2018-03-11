@@ -1,2 +1,0 @@
-class ReplyLike < ApplicationRecord
-end
