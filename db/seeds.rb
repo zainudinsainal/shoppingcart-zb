@@ -96,9 +96,9 @@ puts "13 Korean foods created"
 #Japanese
 japan_product1 = [
   {name: "Kimchi With Chicken Ramen", description: "Chicken broth ramen with vegetables lightly seasoned with salt" , price: '16.50'},
-  {name: "Mushroom Ramen", description: "Pork broth ramen with sliced pork" , price: '14.90'},
+  {name: "Mushroom Ramen", description: "Musroom broth ramen with sliced chciken" , price: '14.90'},
   {name: "Chicken Cha-Shu Ramen", description: "Bean Paste broth ramen with seaweed" , price: '18.20'},
-  {name: "Dry Ramen", description: "Pork Cutlet with white rice" , price: '9.50'},
+  {name: "Dry Ramen", description: "Beef Cutlet with white rice" , price: '9.50'},
   {name: "Abalone Seafood Ramen", description: "Curry with rice" , price: '2'},
   {name: "Kimchi with Minced Chicken", description: "Curry with rice" , price: '10.50'},
   {name: "Salmon Maki", description: "Sides/Savoury Meat Pancake" , price: '12.90'},
@@ -115,7 +115,7 @@ end
 
 japan_product2 = [
   {name: "Shio Ramen", description: "Chicken broth ramen with vegetables lightly seasoned with salt" , price: '13.50'},
-  {name: "Managtsua", description: "Pork broth ramen with sliced beef" , price: '17.50'},
+  {name: "Managtsua", description: "Fish broth ramen with sliced beef" , price: '17.50'},
   {name: "Miso Ramen", description: "Bean Paste broth ramen with seaweed" , price: '13.00'},
   {name: "Japanese Curry/Fish", description: "Curry with rice" , price: '7.50'},
   {name: "Okonomiyaki", description: "Sides/Savoury Meat Pancake" , price: '4.50'},
