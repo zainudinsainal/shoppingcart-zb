@@ -1,18 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 mt-3">
-      <div class="card mb-3">
-        <div class="card-body">
-          <p>Categories</p>
-          <hr>
-           <% @categories.each do |category| %>
-            <p><%= link_to category.name, category_path(category) %></p>
-            <hr>
-          <% end %>
-        </div>
-        <br>
-      </div>
-
+      <ul class="list-group">
+        <li class="list-group-item">Categories</li>
+        <% @categories.each do |category| %>
+          <li class="list-group-item"><%= link_to category.name, category_path(category) %></li>
+        <% end %>
+      </ul>
     </div>
     <div class="col-md-9 mt-1">
     <nav aria-label="breadcrumb">
