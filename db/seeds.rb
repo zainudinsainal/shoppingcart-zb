@@ -1,5 +1,5 @@
 #Restaurant
-restaurant0 = Restaurant.create!(stall_name: "Craveing Nasi Lemak", stall_address: "1 Pasir Ris Central Street 3, White Sands Mall, Singapore 518457")
+restaurant0 = Restaurant.create!(stall_name: "Craving Nasi Lemak", stall_address: "1 Pasir Ris Central Street 3, White Sands Mall, Singapore 518457")
 restaurant1 = Restaurant.create!(stall_name: "Ispirasi", stall_address: "304 Orchard Road #03-36/37, Lucky Plaza, Singapore 238863")
 restaurant2 = Restaurant.create!(stall_name: "Jeju Chicken", stall_address: "249 Victoria Street, Bugis Village, Singapore 188034")
 restaurant3 = Restaurant.create!(stall_name: "Meme Chicken", stall_address: "1 Vista Exchange Green, #01-24, S138617")
