@@ -76,19 +76,10 @@ korean_product1.each do |p|
 end
 
 korean_product2 = [
-  {name: "Ginseng Chicken Rice", description: "Chicken soup with chicken" , price: '5.50'},
-  {name: "Bibibam", description: "Mixed vegetables with white rice" , price: '3.50'},
-  {name: "Japchae", description: "Stir fried vegetable with glass noodles" , price: '4.50'},
-  {name: "Kim Chi Ramen", description: "Korean Pickled veg with noodles" , price: '3.50'},
-  {name: "Grilled BBQ Pork", description: "Good O' BBQ Pork" , price: '3.50'},
-  {name: "Grilled BBQ Chicken", description: "Good O' BBQ Chicken" , price: '3.50'},
-  {name: "Grilled BBQ Beef", description: "Good O' BBQ Beef" , price: '3.50'},
-  {name: "Bulgogi/beef", description: "Sides/more good O' BBQ Beef" , price: '1.50'},
-  {name: "Bulgogi/pork", description: "Sides/more good O' BBQ Pork" , price: '1.50'},
-  {name: "Kim Chi", description: "Sides/Korean staple pickled cabbage" , price: '0.50'},
-  {name: "Mandu", description: "Sides/Korean dumplings" , price: '1.50'},
-  {name: "Gimbap", description: "Sides/Korean 'sushi' with seaweed" , price: '1.50'},
-  {name: "Gimbap", description: "Sides/Fried Chicken not from KFC" , price: '1.50'}
+  {name: "Wings & Stick Meal", description: "Chicken soup with chicken" , price: '10.50'},
+  {name: "Nene Signature Pasta", description: "Mixed vegetables with white rice" , price: '11.50'},
+  {name: "Tangy Tomato Pasta", description: "Stir fried vegetable with glass noodles" , price: '11.50'},
+  {name: "Bap Burger", description: "Korean Pickled veg with noodles" , price: '7.90'},
 ]
 korean_product2.each do |p|
   product = restaurant3.products.create!(p)
