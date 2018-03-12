@@ -12,7 +12,7 @@ class RepliesController < ApplicationController
     @reply = @review.replies.create(reply_params)
     @reply.user = current_user
     @reply.save
-    redirect_to product_path(@product)
+    redirect_to new_product_review_reply_path(params[:review_id])
   end
   
   def destroy 
@@ -20,7 +20,7 @@ class RepliesController < ApplicationController
     @review = Review.find(params[:review_id])
     @reply = Reply.find(params[:id])
     @reply.destroy
-    redirect_to product_path(@product)
+    redirect_to new_product_review_reply_path
   end
 
   private
