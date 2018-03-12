@@ -27,7 +27,7 @@
           <p><small><b>@<%= reply.user.name %></b> Replied <%= time_ago_in_words(reply.created_at)%> ago</small></p>
           <p><%= icon('far', 'comment-alt') %>&nbsp;&nbsp;<%= reply.body %>&nbsp;&nbsp;</p>
           <% if reply.user == current_user %>
-            <%= link_to icon('far', 'trash-alt'), product_review_reply_path(@product, @review, reply), method: :delete %>
+            <%= link_to icon('far', 'trash-alt'), product_review_reply_path(@product, @review, reply), method: :delete %>&nbsp;&nbsp;
           <%if ReplyLike.find_by(reply: reply, user: current_user) %>
               <%= link_to icon('fas', 'star'), runlike_product_review_reply_path(@product, @review, reply), method: :delete %>
             <% else %>
