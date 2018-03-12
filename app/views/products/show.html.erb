@@ -9,6 +9,7 @@
       <h5 class="text-muted"><%= @product.description %></h5>
       <% @product.categories.each do |category| %>
         <h6 class="text-muted"><%= category.name %></h6>
+      <% end %>
         <%= link_to 'Restaurant Info', restaurant_path(@restaurant), class: "btn btn-info" %>&nbsp;&nbsp;
         <%= link_to 'Add to cart', add_one_product_path(@product.id), method: :put, class: "btn btn-success" %>
         <br><br>
@@ -17,7 +18,6 @@
         <% else %>
           <p>&nbsp;&nbsp;<%= link_to icon('far', 'thumbs-up'), product_favourite_path(@product), method: :post %> <span>&nbsp;&nbsp;<%= @product.favourites.count %> recommendation</span></p>
         <% end %>
-      <% end %>
     </div>
   </div>
 
