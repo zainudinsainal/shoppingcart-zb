@@ -9,7 +9,7 @@ class ReplyLikesController < ApplicationController
     reply = Reply.find(params[:id])
     replyLike = ReplyLike.find_by(user: current_user, reply: reply)
     replyLike.destroy
-    redirect_to new_product_review_reply_path(params[:review_id])
+    redirect_to new_product_review_reply_path
   end
 
   private
