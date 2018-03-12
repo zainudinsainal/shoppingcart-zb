@@ -1,7 +1,6 @@
 class LikesController < ApplicationController
   def create
     review = Review.find(params[:id])
-    byebug
     review.likes.create(user: current_user)
     redirect_to product_path(params[:product_id])
   end
