@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card mt-5 mb-5">
+          <div class="card-header">
+            <h2 class="text-center">New Transaction</h2>
+            <div class="card-body">
+              <%= form_tag transactions_path do %>
+              <div class="form-group">
+                <p>Please enter your payment details:</p>
+                <div id="dropin"</div>
+                <%= submit_tag "Pay $#{current_user.cart_total_price}", class: "btn btn-success btn-block w-50 mx-auto mt-3"  %>
+              <% end %>
+              </div>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>

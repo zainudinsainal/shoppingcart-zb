@@ -38,6 +38,8 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show] 
 
+  resources :transactions, only: [:new, :create]
+
   namespace :admin do
     resources :products
     resources :restaurants

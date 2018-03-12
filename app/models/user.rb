@@ -17,5 +17,20 @@ class User < ApplicationRecord
   has_many :relationships
 
   has_many :favourites
+
+  def cart_total_price
+    cart_items = $redis.hgetall(id)
+    total_price = cart_items.reduce(0) do |acc, (product_id, quantity)|
+      product = Product.find(product_id)
+      acc + (product.price * quantity.to_i)
+    end
+    # total_price = 0
+    # cart_items.each do |product_id, quantity|
+    #   product = Product.find(product_id)
+    #   total_price += product.price * quantity.to_i
+    # end
+    # total_price
+  end
+
 end
 
