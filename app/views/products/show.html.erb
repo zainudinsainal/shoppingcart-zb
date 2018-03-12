@@ -13,9 +13,9 @@
         <%= link_to 'Add to cart', add_one_product_path(@product.id), method: :put, class: "btn btn-success" %>
         <br><br>
         <% if Favourite.find_by(product: @product, user: current_user) %>
-          <p>&nbsp;&nbsp;<%= link_to icon('fas', 'thumbs-up'), product_unfavorite_path(@product), method: :delete %> <span>&nbsp;&nbsp;<%= @product.favourites.count %> recommendation</span></p>
+          <p>&nbsp;&nbsp;<%= link_to icon('fas', 'thumbs-up'), product_unfavorite_path(@product), method: :delete, remote: true %> <span>&nbsp;&nbsp;<%= @product.favourites.count %> recommendation</span></p>
         <% else %>
-          <p>&nbsp;&nbsp;<%= link_to icon('far', 'thumbs-up'), product_favourite_path(@product), method: :post %> <span>&nbsp;&nbsp;<%= @product.favourites.count %> recommendation</span></p>
+          <p>&nbsp;&nbsp;<%= link_to icon('far', 'thumbs-up'), product_favourite_path(@product), method: :post, remote: true %> <span>&nbsp;&nbsp;<%= @product.favourites.count %> recommendation</span></p>
         <% end %>
       <% end %>
     </div>
@@ -47,9 +47,9 @@
               <% end %>
               <%= simple_format review.content %>
             <% if Like.find_by(review: review, user: current_user) %>
-              <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete %>
+              <%= link_to icon('fas', 'star'), unlike_product_review_path(@product, review), method: :delete, remote: true %>
             <% else %>
-              <%= link_to icon('far', 'star'), like_product_review_path(@product, review), method: :post %>
+              <%= link_to icon('far', 'star'), like_product_review_path(@product, review), method: :post, remote: true %>
             <% end %>
               <%= review.likes.count %>&nbsp;&nbsp;&nbsp;&nbsp;
               <%= link_to icon('far', 'comment'), new_product_review_reply_path(@product, review) %>
