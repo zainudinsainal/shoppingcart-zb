@@ -34,7 +34,7 @@ class User < ApplicationRecord
   
   def purchase_products!
     cart_items = $redis.hgetall(id)
-    order = self.orders.create(status: 'pending')
+    order = self.orders.create(status: 'paid')
     cart_items.each do |product_id, quantity|
       product = Product.find(product_id)
       order.orders_products.create(product_id: product.id, quantity: quantity.to_i, unit_price: product.price.to_d)
