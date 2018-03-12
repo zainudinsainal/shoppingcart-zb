@@ -31,16 +31,13 @@
                 <% end %>
               </tbody>
             </table>
-             <% total_price = @cart_items.reduce(0) do |sum, (product_id, quantity)| %>
-              <% product = Product.find(product_id) %>
-               <% sum + (product.price * quantity.to_i)  %>  
-               <% end %>
+
                <div class="d-flex justify-content-end">
-                <h4 class="text-left">Grand total: <b><%= number_to_currency(total_price) %></b></h4>
+                <h4 class="text-left">Grand total: <b><%= number_to_currency(current_user.cart_total_price) %></b></h4>
                </div>
                <div class="d-flex justify-content-end mt-2">
-            <%= link_to "Food List", root_path, class: 'btn btn-info ' %>&nbsp;&nbsp;&nbsp;
-            <%= link_to "Checkout", orders_path, method: :post, class: 'btn btn-success ' %>
+            <%= link_to "Food List", root_path, class: 'btn btn-info' %>&nbsp;&nbsp;&nbsp;
+            <%= link_to "Checkout", new_transaction_path, class: 'btn btn-success' %>
             </div>
           <% else %>
           <p> Your cart is empty</p>
