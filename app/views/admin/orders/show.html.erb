@@ -36,7 +36,7 @@
         <tbody>
           <% @order.orders_products.each do |order_product|%>
             <tr>
-              <td><%= link_to order_product.product.name, product_path(order_product.product) %></td>
+              <td><%= link_to order_product.product.name, admin_product_path(order_product.product) %></td>
               <td><%= number_to_currency(order_product.product.price) %></td>
               <td><%= order_product.quantity%></td>
               <td><%= number_to_currency(order_product.quantity * order_product.product.price) %></td>
