@@ -4,9 +4,8 @@
       <%= image_tag @restaurant.picture, class: "img-fluid rounded mx-auto"%>
     </div>
     <div class="col-md-8 offset-md-1 my-3">
-      <h1>Restaurant</h1>
-       <h4><%= @restaurant.stall_name %></h4>
-       <h5><%= @restaurant.stall_address %></h4>
+       <h1><%= @restaurant.stall_name %></h1>
+       <h6 class="text-muted"><%= @restaurant.stall_address %></h6>
       <div>
       <% if Relationship.find_by(user: current_user, restaurant: @restaurant) %>
         <%= link_to 'Unfollow', unfollow_restaurant_follow_path(@restaurant), method: :delete, class: "btn btn-outline-danger" %>

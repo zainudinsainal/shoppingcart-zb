@@ -6,9 +6,9 @@
     <div class="col-md-8 offset-md-1 my-3">
       <h1><%= @product.name %></h1>
       <h4><%= number_to_currency(@product.price) %></h4>
-      <h5><%= @product.description %></h5>
+      <h5 class="text-muted"><%= @product.description %></h5>
       <% @product.categories.each do |category| %>
-        <h6><%= category.name %></h6>
+        <h6 class="text-muted"><%= category.name %></h6>
         <%= link_to 'Restaurant Info', restaurant_path(@restaurant), class: "btn btn-info" %>&nbsp;&nbsp;
         <%= link_to 'Add to cart', add_one_product_path(@product.id), method: :put, class: "btn btn-success" %>
         <br><br>

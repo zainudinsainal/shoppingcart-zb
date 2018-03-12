@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @products = Product.page((params[:page])).per(9)
+    @products = Product.page((params[:page])).per(15)
     @categories = Category.all
   end
 
