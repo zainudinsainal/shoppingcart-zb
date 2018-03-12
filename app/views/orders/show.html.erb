@@ -26,14 +26,14 @@
             <% @order.orders_products.each do |order_product|%>
               <tr>
                 <td><%= link_to order_product.product.name, product_path(order_product.product) %></td>
-                <td><%= number_to_currency(order_product.product.price) %></td>
+                <td><%= number_to_currency(order_product.unit_price) %></td>
                 <td><%= order_product.quantity%></td>
-                <td><%= number_to_currency(order_product.quantity * order_product.product.price) %></td>
+                <td><%= number_to_currency(order_product.quantity * order_product.unit_price) %></td>
               </tr>
               <% end %>
               <tr>
                 <% total_price = @order.orders_products.reduce(0) do |sum, order_product| %>
-                <% sum + (order_product.product.price * order_product.quantity)  %>  
+                <% sum + (order_product.unit_price * order_product.quantity)  %>  
                 <% end %>
                 <td colspan='4' class="text-right"><h5>Grand Total: <%= number_to_currency(total_price) %></h5></td>
               </tr>

@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20180311071104) do
     t.bigint "order_id"
     t.bigint "product_id"
     t.integer "quantity", null: false
+    t.decimal "unit_price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id", unique: true
