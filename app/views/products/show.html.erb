@@ -12,10 +12,10 @@
         <%= link_to 'Restaurant Info', restaurant_path(@restaurant), class: "btn btn-info" %>&nbsp;&nbsp;
         <%= link_to 'Add to cart', add_one_product_path(@product.id), method: :put, class: "btn btn-success" %>
         <br><br>
-        <% if Favourite.find_by(product: @product) %>
-          <p>&nbsp;&nbsp;<%= link_to icon('fas', 'thumbs-up'), product_unfavorite_path(@product), method: :delete %> <span>&nbsp;&nbsp;<%= Favourite.count %> recommendation</span></p>
+        <% if Favourite.find_by(product: @product, user: current_user) %>
+          <p>&nbsp;&nbsp;<%= link_to icon('fas', 'thumbs-up'), product_unfavorite_path(@product), method: :delete %> <span>&nbsp;&nbsp;<%= @product.favourites.count %> recommendation</span></p>
         <% else %>
-          <p>&nbsp;&nbsp;<%= link_to icon('far', 'thumbs-up'), product_favourite_path(@product), method: :post %> <span>&nbsp;&nbsp;<%= Favourite.count %> recommendation</span></p>
+          <p>&nbsp;&nbsp;<%= link_to icon('far', 'thumbs-up'), product_favourite_path(@product), method: :post %> <span>&nbsp;&nbsp;<%= @product.favourites.count %> recommendation</span></p>
         <% end %>
       <% end %>
     </div>
