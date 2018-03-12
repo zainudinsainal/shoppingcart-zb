@@ -11,11 +11,7 @@ class TransactionsController < ApplicationController
               payment_method_nonce: params[:payment_method_nonce])
 
     if @result.success?
-      cart_items = $redis.hgetall(current_user.id)
-      order = Order.create(user_id: current_user.id, status: 'pending')
-      cart_items.each do |product, quantity|
-        order.orders_products.create(product_id: product, quantity: quantity)
-      end
+      order = current_user.purchase_products!
       $redis.del(current_user.id)
       redirect_to orders_path, notice: "Congraulations! Your transaction has been successfully!"
     else

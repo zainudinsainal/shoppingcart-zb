@@ -31,6 +31,15 @@ class User < ApplicationRecord
     # end
     # total_price
   end
+  
+  def purchase_products!
+    cart_items = $redis.hgetall(id)
+    order = self.orders.create(status: 'pending')
+    cart_items.each do |product_id, quantity|
+      product = Product.find(product_id)
+      order.orders_products.create(product_id: product.id, quantity: quantity.to_i, unit_price: product.price.to_d)
+    end
+  end
 
 end
 
