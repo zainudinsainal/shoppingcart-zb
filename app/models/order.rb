@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 
-  enum status:[ :paid, :delivered, :refund]
+  enum status:[ :paid, :delivered, :refund, :unsuccessful]
 
   has_many :orders_products, dependent: :destroy
   has_many :products, through: :orders_products

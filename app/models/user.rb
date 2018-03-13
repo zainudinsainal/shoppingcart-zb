@@ -43,5 +43,15 @@ class User < ApplicationRecord
     order
   end
 
+  def unpurchase_products!
+    cart_items = $redis.hgetall(id)
+    order = self.orders.create(status: 'unsuccessful')
+    cart_items.each do |product_id, quantity|
+      product = Product.find(product_id)
+      order.orders_products.create(product_id: product.id, quantity: quantity.to_i, unit_price: product.price.to_d)
+    end
+    order
+  end
+
 end
 
