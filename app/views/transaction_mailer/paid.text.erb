@@ -1,0 +1,8 @@
+
+Welcome to my application
+
+ <% @order.products.each do |product|%>
+"Welcome <%= @user.email%>, Salutations! The <%= product.name %> Your amount of $ <%= number_to_currency(@order.total_price) %> is paid. We will deliver the products shortly."
+<% end %>
+From,
+The example team

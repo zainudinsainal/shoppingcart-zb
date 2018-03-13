@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+        :recoverable, :rememberable, :trackable, :validatable
 
   validates :address, presence: true
   validates :name, presence: true
@@ -39,6 +39,7 @@ class User < ApplicationRecord
       product = Product.find(product_id)
       order.orders_products.create(product_id: product.id, quantity: quantity.to_i, unit_price: product.price.to_d)
     end
+    order
   end
 
 end
