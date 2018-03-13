@@ -2,11 +2,11 @@
 <h1>Welcome to FoodXPress</h1>
 
 <% if @order.products.pluck(:name).count.to_i == 2%> 
-  <%= "Welcome #{@user.email}, The #{@order.products.pluck(:name).join(' and ')} which amounts to #{number_to_currency(@order.total_price)} has been paid. We will deliver the products shortly." %>
+  <%= "Welcome #{@user.email}, The #{@order.products.pluck(:name).join(' and ')} which amounts to #{number_to_currency(@order.total_price)} is unpaid. Please contact your card service provider for more details." %>
 <% elsif @order.products.pluck(:name).count.to_i > 2%>
-  <%= "Welcome #{@user.email}, The #{@order.products.pluck(:name)[0...-1].join(', ')} and #{@order.products.last.name} which amounts to #{number_to_currency(@order.total_price)} has been paid. We will deliver the products shortly." %>
+  <%= "Welcome #{@user.email}, The #{@order.products.pluck(:name)[0...-1].join(', ')} and #{@order.products.last.name} which amounts to #{number_to_currency(@order.total_price)} is unpaid. Please contact your card service provider for more details." %>
 <% else %>
-  <%= "Welcome #{@user.email}, The #{@order.products.name} which amounts to #{number_to_currency(@order.total_price)} has been paid. We will deliver the products shortly." %>
+  <%= "Welcome #{@user.email}, The #{@order.products.name} which amounts to #{number_to_currency(@order.total_price)} is unpaid. Please contact your card service provider for more details." %>
 <% end %>
 <p>Warm regards,</p>
 <p>The dedicated FoodXPress Delivery Team</p>
