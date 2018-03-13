@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :reply_likes
   has_many :likes
   has_many :relationships
+  has_many :transactions
 
   has_many :favourites
 
@@ -39,6 +40,7 @@ class User < ApplicationRecord
       product = Product.find(product_id)
       order.orders_products.create(product_id: product.id, quantity: quantity.to_i, unit_price: product.price.to_d)
     end
+    order
   end
 
 end
