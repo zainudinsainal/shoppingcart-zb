@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     resources :categories, except: [:show, :new]
     resources :orders, only: [:index, :show, :update]
     resources :reviews, only: [:index, :destroy]
+    resources :transactions, only: [:index, :show]
     root "products#index"
   end
 
