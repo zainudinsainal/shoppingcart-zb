@@ -1,0 +1,15 @@
+
+
+Welcome to FoodXPress
+
+<% if @order.products.pluck(:name).count.to_i == 2%> 
+  <%= "Welcome #{@user.email}, The #{@order.products.pluck(:name).join(' and ')} which amounts to #{number_to_currency(@order.total_price)} has been paid. We will deliver the products shortly." %>
+<% elsif @order.products.pluck(:name).count.to_i > 2%>
+  <%= "Welcome #{@user.email}, The #{@order.products.pluck(:name)[0...-1].join(', ')} and #{@order.products.last.name} which amounts to #{number_to_currency(@order.total_price)} has been paid. We will deliver the products shortly." %>
+<% else %>
+  <%= "Welcome #{@user.email}, The #{@order.products.name} which amounts to #{number_to_currency(@order.total_price)} has been paid. We will deliver the products shortly." %>
+<% end %>
+Warm regards,
+The dedicated FoodXPress Delivery Team
+
+

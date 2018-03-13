@@ -11,6 +11,8 @@ class TransactionsController < ApplicationController
               payment_method_nonce: params[:payment_method_nonce])
     if @result.success?
       order = current_user.purchase_products!
+
+      TransactionMailer.paid(current_user, order).deliver_later 
       order.create_payment(
         payment_method: @result.transaction.payment_instrument_type, 
         payment_status: @result.transaction.status, 
@@ -19,11 +21,13 @@ class TransactionsController < ApplicationController
         payment_response: @result.transaction.processor_response_text, 
         user_id: current_user.id
       )
+
       $redis.del(current_user.id)
       redirect_to orders_path, notice: "Congraulations! Your transaction has been successfully!"
     else
       flash[:alert] = "Something went wrong while processing your transaction. Please try again!"
       gon.client_token = generate_client_token
+      TransactionMailer.unpaid(current_user).deliver_later
       render :new
     end
   end
