@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :reply_likes
   has_many :likes
   has_many :relationships
+  has_many :transactions
 
   has_many :favourites
 
