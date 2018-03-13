@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Restaurant</h1>
+      <h1>Transactions</h1>
       <div>
         <%= link_to 'Food', admin_products_path %> |
         <%= link_to 'Categories', admin_categories_path %> | 
-        <%= link_to 'Restaurant', admin_restaurants_path %> |
+        <%= link_to 'Restaurants', admin_restaurants_path %> |
+        <%= link_to 'Reviews', admin_reviews_path %> |
         <%= link_to 'Orders', admin_orders_path %> |
-        <%= link_to 'Food Reviews', admin_reviews_path %> |
         <%= link_to 'Transactions', admin_transactions_path %>  
       </div>
       <br>
@@ -16,9 +16,9 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">User</th>
             <th scope="col">Order No.</th>
-            <th scope="col">Payment Status</th>
+            <th scope="col">Name</th>
+            <th scope="col">Payment Response</th>
             <th scope="col">Created</th>
             <th scope="col">Action</th>
           </tr>
@@ -27,10 +27,10 @@
           <% @transactions.each do |transaction| %>
             <tr>
               <th scope="row"><%= transaction.id %></th>
+              <td><%= link_to "##{sprintf('2017%05d', transaction.order_id )}", admin_order_path(transaction.order_id) %></td>
               <td><%= transaction.user.name %></td>
-              <td><%= transaction.order_id %></td>
-              <td><%= transaction.payment_status.capitalize %></td>
-              <td><%= transaction.created_at.localtime.strftime('%-d %b %Y %H:%M:%S %p') %></td>
+              <td><%= transaction.payment_response.capitalize %></td>
+              <td><%= transaction.created_at.localtime.strftime('%-d %b %Y %H:%M:%S') %></td>
               <td><%= link_to 'Show', admin_transaction_path(transaction) %></td>
             </tr>
           <% end %>
