@@ -4,7 +4,8 @@
       <h1 class="text-center">Transaction</h1>
       <div class="card">
         <div class="card-body">
-          <h4>Order No.: <strong><%= "##{sprintf('2017%05d', @transaction.order_id )}" %></strong></h4>
+          <h4>Order No: <strong><%= link_to "##{sprintf('2017%05d', @transaction.order_id )}", admin_order_path(@transaction.order_id) %></strong></h4>
+          <br>
           <p>Customer Name: <%= @transaction.user.name  %></p>
           <p>Payment Status: <%= @transaction.payment_status.capitalize  %></p>
           <p>Payment Method: <%= @transaction.payment_method.capitalize %></p>
