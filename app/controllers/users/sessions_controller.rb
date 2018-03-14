@@ -3,7 +3,6 @@
 class Users::SessionsController < Devise::SessionsController
   include Accessible
   skip_before_action :check_user, only: [:destroy]
-  before_action :session_to_cart, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -28,12 +27,17 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  private
+  # private
 
-  def session_to_cart
-    session[:cart].each do |product_id, quantity|
-      $redis.hset current_user.id, product_id, quantity
-    end
-    session[:cart] = nil
-  end
+  # def session_to_cart
+  #   if session[:cart] == nil
+  #     redirect_to root_path
+  #   else
+  #     session[:cart].each do |product_id, quantity|
+  #       $redis.hset current_user.id, product_id, quantity
+  #     end
+  #     session[:cart] = nil
+  #     redirect_to cart_path
+  #   end
+  # end
 end

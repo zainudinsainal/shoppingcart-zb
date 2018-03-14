@@ -12,8 +12,16 @@ module Accessible
       redirect_to(admin_root_path) && return
     elsif current_user
       flash.clear
-      # The authenticated root path can be defined in your routes.rb in: devise_scope :user do...
-      redirect_to(root_path) && return
+      if session[:cart] == nil
+        redirect_to root_path
+      else
+        session[:cart].each do |product_id, quantity|
+          $redis.hset current_user.id, product_id, quantity
+        end
+        session[:cart] = nil
+        redirect_to cart_path
+      end
+      # redirect_to(root_path) && return
     end
   end
 end

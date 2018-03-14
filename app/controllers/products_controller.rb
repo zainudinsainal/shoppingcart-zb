@@ -33,7 +33,6 @@ class ProductsController < ApplicationController
       session[:cart] ||= {}
       session[:cart][params[:id]] ||= 0
       session[:cart][params[:id]] += 1
-
     end
     redirect_to cart_path
   end
@@ -43,9 +42,14 @@ class ProductsController < ApplicationController
       $redis.hincrby current_user.id, params[:id], -1
       if $redis.hget(current_user.id, params[:id]).to_i == 0
         $redis.hdel current_user.id, params[:id]
+        flash[:notice] = 'Food removed from cart'
       end
     else
       session[:cart][params[:id]] -= 1
+      if session[:cart][params[:id]] == 0
+        session[:cart] = nil
+        flash[:notice] = 'Food removed from cart'
+      end
     end
     redirect_to cart_path
   end
@@ -53,9 +57,10 @@ class ProductsController < ApplicationController
   def remove_from_cart
     if current_user
       $redis.hdel(current_user.id, params[:id])
-      flash[:notice] = 'Product removed from cart'
+      flash[:notice] = 'Food removed from cart'
     else
       session[:cart] = nil
+      flash[:notice] = 'Food removed from cart'
     end
     redirect_to cart_path
   end
