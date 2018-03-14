@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :trackable, :validatable
 
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :password, presence: true
   validates :address, presence: true
   validates :name, presence: true
   validates :birthday, presence: true
-  enum gender: [:male ,:female]
+  enum gender: [:male, :female]
 
   has_many :orders
   has_many :reviews
@@ -16,7 +18,6 @@ class User < ApplicationRecord
   has_many :likes
   has_many :relationships
   has_many :transactions
-
   has_many :favourites
 
   def cart_total_price

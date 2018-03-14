@@ -3,4 +3,8 @@ class Admin < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
           :rememberable, :trackable, :validatable
+
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :password, presence: true
+  
 end
