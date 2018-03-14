@@ -1,4 +1,7 @@
 class LikesController < ApplicationController
+
+  before_action :authenticate_user!
+
   def create
     review = Review.find(params[:id])
     review.likes.create(user: current_user)

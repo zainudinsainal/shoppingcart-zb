@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
 
-  before_action :authenticate_user!
-
   def index
     @products = Product.page((params[:page])).per(15)
     @categories = Category.all
@@ -29,22 +27,36 @@ class ProductsController < ApplicationController
   end
 
   def add_one
-    $redis.hincrby current_user.id, params[:id], 1
+    if current_user
+      $redis.hincrby current_user.id, params[:id], 1
+    else
+      session[:cart] ||= {}
+      session[:cart][params[:id]] ||= 0
+      session[:cart][params[:id]] += 1
+
+    end
     redirect_to cart_path
   end
 
   def remove_one
-    $redis.hincrby current_user.id, params[:id], -1
-    if $redis.hget(current_user.id, params[:id]).to_i == 0
-      $redis.hdel current_user.id, params[:id]
-      redirect_to cart_path
+    if current_user
+      $redis.hincrby current_user.id, params[:id], -1
+      if $redis.hget(current_user.id, params[:id]).to_i == 0
+        $redis.hdel current_user.id, params[:id]
+      end
+    else
+      session[:cart][params[:id]] -= 1
     end
     redirect_to cart_path
   end
 
   def remove_from_cart
-    $redis.hdel(current_user.id, params[:id])
-    flash[:notice] = 'Product removed from cart'
+    if current_user
+      $redis.hdel(current_user.id, params[:id])
+      flash[:notice] = 'Product removed from cart'
+    else
+      session[:cart] = nil
+    end
     redirect_to cart_path
   end
 

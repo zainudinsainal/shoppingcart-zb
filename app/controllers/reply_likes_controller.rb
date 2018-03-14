@@ -1,4 +1,7 @@
 class ReplyLikesController < ApplicationController
+
+  before_action :authenticate_user!
+
   def create
     reply = Reply.find(params[:id])
     reply.reply_likes.create(user: current_user)

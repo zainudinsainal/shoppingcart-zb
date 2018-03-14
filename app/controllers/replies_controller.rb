@@ -1,5 +1,7 @@
 class RepliesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def new
     @reply = Reply.new
     @review = Review.find(params[:review_id])

@@ -1,8 +1,14 @@
 class TransactionsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def new
-    gon.client_token = generate_client_token
-    @cart_items = $redis.hgetall(current_user.id)
+    if current_user
+      gon.client_token = generate_client_token
+      @cart_items = $redis.hgetall(current_user.id)
+    else
+      redirect_to new_admin_session
+    end
   end
 
   def create

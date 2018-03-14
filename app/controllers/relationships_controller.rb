@@ -1,4 +1,7 @@
 class RelationshipsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def create
     restaurant = Restaurant.find(params[:id])
     restaurant.relationships.create(user: current_user)
