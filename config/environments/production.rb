@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "shopping-cart_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-config.actiom_mailer.smtp_settings = {
+config.action_mailer.smtp_settings = {
   :user_name => ENV['SENDGRID_USERNAME'],
   :password => ENV['SENDGRID_PASSWORD'],
   :domain => 'shopping-cart-zb.herokuapp.com',
