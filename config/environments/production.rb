@@ -65,7 +65,7 @@ Rails.application.configure do
 config.actiom_mailer.smtp_settings = {
   :user_name => ENV['SENDGRID_USERNAME'],
   :password => ENV['SENDGRID_PASSWORD'],
-  :domain => 'yourdomain.com',
+  :domain => 'shopping-cart-zb.herokuapp.com',
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
