@@ -2,7 +2,7 @@ class TransactionMailer < ApplicationMailer
   def paid(user, order)
     @order = order
     @user = user
-    mail to: @user.email, subject: "Welcome to the application"
+    mail to: @user.email, subject: "Product succeessful paid."
   end
 
   def unpaid(user, order)
