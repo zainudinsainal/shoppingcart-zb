@@ -26,13 +26,29 @@
             <li class="nav-item navbar-nav "><%= link_to('Change Password', edit_user_registration_path , class: 'nav-link') %></li>
             <li class="nav-item navbar-nav "><%= link_to('Log out', destroy_user_session_path, method: :delete, class: 'nav-link') %></li> 
           <% else %>
-            <li class="navbar-nav nav-item"><%= link_to('Cart', new_user_registration_path, class: 'nav-link') %></li> 
+            <li class="navbar-nav nav-item"><%= link_to('Cart', cart_path, class: 'nav-link') %></li> 
             <li class="navbar-nav nav-item"><%= link_to('Sign Up', new_user_registration_path, class: 'nav-link') %></li> 
             <li class="navbar-nav nav-item"><%= link_to('Log in', new_user_session_path, class: 'nav-link') %></li>
           <% end %>
         </ul>
       </div>
     </nav>
+    <% if flash[:notice] %>
+      <div class="container-fluid alert alert-success alert-dismissible fade show text-center" role="alert">
+        <%= notice %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="container-fluid alert alert-danger alert-dismissible fade show text-center" role="alert">
+        <%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

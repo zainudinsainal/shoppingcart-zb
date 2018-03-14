@@ -1,8 +1,13 @@
 class TransactionsController < ApplicationController
 
   def new
+    if current_user
     gon.client_token = generate_client_token
     @cart_items = $redis.hgetall(current_user.id)
+    else
+    flash[:alert] = "Please sign in to complete your order"
+    redirect_to new_user_session_path
+    end
   end
 
   def create
@@ -23,9 +28,9 @@ class TransactionsController < ApplicationController
     if @result.success?
       TransactionMailer.paid(current_user, order).deliver_later 
       $redis.del(current_user.id)
-      redirect_to orders_path, notice: "Congraulations! Your transaction has been successfully!"
+      flash[:notice] = "Transaction completed. You will receive an email confirmation when your order is complete"
+      redirect_to orders_path
     else
-      flash[:alert] = "Something went wrong while processing your transaction. Please try again!"
       order = current_user.unpurchase_products!
       TransactionMailer.unpaid(current_user, order).deliver_later
       order.create_payment(
@@ -37,6 +42,7 @@ class TransactionsController < ApplicationController
         user_id: current_user.id
       )
       gon.client_token = generate_client_token
+      flash[:alert] = "Something went wrong while processing your transaction. Please try again!"
       render :new
     end
   end
