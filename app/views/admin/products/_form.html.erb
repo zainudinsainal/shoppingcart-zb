@@ -1,16 +1,16 @@
 <% if @product.errors.any? %>
-  <div class="container ">
-    <div class="row d-flex justify-content-center">
-      <div class="alert alert-info col-md-6" role="alert">
-        <h4>We have some errors here !</h4>
-          <ul>
-            <% @product.errors.full_messages.each do |msg| %>
-              <li class="mb-0"><%= msg %></li>
-            <% end %>
-          </ul>
-        <hr>
-      </div>
+<div class="container ">
+  <div class="row d-flex justify-content-center">
+    <div class="alert alert-info col-md-6" role="alert">
+      <h4>We have some errors here !</h4>
+        <ul>
+          <% @product.errors.full_messages.each do |msg| %>
+            <li class="mb-0"><%= msg %></li>
+          <% end %>
+        </ul>
+      <hr>
     </div>
+  </div>
 <% end %>
 
   <div class="row d-flex justify-content-center">
