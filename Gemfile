@@ -29,6 +29,7 @@ gem 'font-awesome-sass', '~> 5.0', '>= 5.0.6.2'
 gem 'braintree', '~> 2.84'
 gem 'gon', '~> 6.2'
 gem 'rubocop', '~> 0.53.0'
+gem 'sidekiq', '~> 5.1', '>= 5.1.1'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
