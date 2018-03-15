@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
     if @result.success?
       TransactionMailer.paid(current_user, order).deliver_later
       $redis.del(current_user.id)
-      flash[:notice] = 'Transaction completed. You will receive an email confirmation when your order is complete'
+      flash[:notice] = 'You will receive an email confirmation when your order is complete. Thank you for shopping with us.'
       redirect_to orders_path
     else
       order = current_user.unpurchase_products!

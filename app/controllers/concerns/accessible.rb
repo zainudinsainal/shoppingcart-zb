@@ -14,7 +14,7 @@ module Accessible
       redirect_to(admin_root_path) && return
     elsif current_user
       flash.clear
-      if session[:cart] == nil
+      if session[:cart].nil?
         redirect_to root_path
       else
         session[:cart].each do |product_id, quantity|
