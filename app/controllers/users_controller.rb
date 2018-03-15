@@ -13,10 +13,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "Profile successfully updated"
+      flash[:notice] = 'Profile successfully updated'
       redirect_to products_path
     else
-      flash.now[:alert] = "Profile failed to update"
+      flash.now[:alert] = 'Profile failed to update'
       render :edit
     end
   end

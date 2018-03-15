@@ -1,13 +1,12 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.page((params[:page])).per(15)
+    @products = Product.page(params[:page]).per(15)
     @categories = Category.all
   end
 
   def show
     @product = Product.find(params[:id])
-    #byebug
     @restaurant = @product.restaurant
     @review = Review.new
     @review_find = Review.find_by(params[:review_id])
@@ -64,8 +63,6 @@ class ProductsController < ApplicationController
     end
     redirect_to cart_path
   end
-
-
 
   private
 

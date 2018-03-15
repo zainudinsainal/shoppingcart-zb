@@ -7,4 +7,5 @@ class CartsController < ApplicationController
       @cart_items = session['cart']
     end
   end
+
 end

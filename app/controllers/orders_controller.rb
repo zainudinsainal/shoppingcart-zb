@@ -19,4 +19,5 @@ class OrdersController < ApplicationController
   #   $redis.del(current_user.id)
   #   redirect_to orders_path
   # end
+
 end

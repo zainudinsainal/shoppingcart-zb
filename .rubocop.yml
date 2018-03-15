@@ -16,6 +16,7 @@ AllCops:
     - Guardfile
     - Rakefile
     - app/channels/**/*
+    - Gemfile
 
 Layout/EmptyLinesAroundBlockBody:
   EnforcedStyle: no_empty_lines
@@ -71,4 +72,7 @@ Style/SymbolArray:
   EnforcedStyle: brackets
 
 Style/WordArray:
+  Enabled: false
+
+Style/EmptyMethod:
   Enabled: false

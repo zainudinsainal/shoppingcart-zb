@@ -1,10 +1,12 @@
 module Accessible
+
   extend ActiveSupport::Concern
   included do
     before_action :check_user
   end
 
   protected
+
   def check_user
     if current_admin
       flash.clear
@@ -24,4 +26,5 @@ module Accessible
       # redirect_to(root_path) && return
     end
   end
+
 end

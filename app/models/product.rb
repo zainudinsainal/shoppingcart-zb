@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+
   validates :name, presence: true
   validates :price, presence: true
 
@@ -13,4 +14,5 @@ class Product < ApplicationRecord
   belongs_to :restaurant
 
   mount_uploader :image, ImageUploader
+
 end

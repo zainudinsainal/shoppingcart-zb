@@ -2,8 +2,7 @@ class Admin::ProductsController < ApplicationController
 
   layout 'admin'
   before_action :authenticate_admin!
-  before_action :set_product, only:  [:show, :edit, :update, :destroy]
-
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
@@ -14,17 +13,15 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new
   end
 
-   def create
-
+  def create
     @product = Product.new(product_params)
     # params[:product][:category_ids].delete("")
     # @product.update_attribute(:category_ids, params[:product][:category_ids].join(","))
-    
     if @product.save
-      flash[:notice] = "Food was successfully created"
+      flash[:notice] = 'Food was successfully created'
       redirect_to admin_products_path
     else
-      flash.now[:alert] = "Food was failed to create"
+      flash.now[:alert] = 'Food was failed to create'
       render :new
     end
   end
@@ -37,24 +34,24 @@ class Admin::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      flash[:notice] = "Food was successfully updated"
+      flash[:notice] = 'Food was successfully updated'
       redirect_to admin_product_path(@product)
     else
-      flash.now[:alert] = "Food was failed to update"
+      flash.now[:alert] = 'Food was failed to update'
       render :edit
     end
   end
 
   def destroy
     @product.destroy
-    flash[:alert] = "Food was deleted"
+    flash[:alert] = 'Food was deleted'
     redirect_to admin_products_path
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :image, :description,  :restaurant_id, category_ids: [])
+    params.require(:product).permit(:name, :price, :image, :description, :restaurant_id, category_ids: [])
   end
 
   def set_product
