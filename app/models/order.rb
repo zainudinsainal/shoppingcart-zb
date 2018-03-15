@@ -1,10 +1,10 @@
 class Order < ApplicationRecord
 
-  enum status:[ :paid, :delivered, :refund, :unsuccessful]
+  enum status: [:paid, :delivered, :refund, :unsuccessful]
 
   has_many :orders_products, dependent: :destroy
   has_many :products, through: :orders_products
-  has_one :payment, foreign_key: "order_id", class_name: "Transaction"
+  has_one :payment, foreign_key: 'order_id', class_name: 'Transaction'
 
   belongs_to :user
 
@@ -13,4 +13,5 @@ class Order < ApplicationRecord
       order_product.unit_price * order_product.quantity
     end.reduce(:+)
   end
+
 end

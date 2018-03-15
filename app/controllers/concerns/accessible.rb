@@ -1,10 +1,12 @@
 module Accessible
+
   extend ActiveSupport::Concern
   included do
     before_action :check_user
   end
 
   protected
+
   def check_user
     if current_admin
       flash.clear
@@ -12,7 +14,7 @@ module Accessible
       redirect_to(admin_root_path) && return
     elsif current_user
       flash.clear
-      if session[:cart] == nil
+      if session[:cart].nil?
         redirect_to root_path
       else
         session[:cart].each do |product_id, quantity|
@@ -24,4 +26,5 @@ module Accessible
       # redirect_to(root_path) && return
     end
   end
+
 end

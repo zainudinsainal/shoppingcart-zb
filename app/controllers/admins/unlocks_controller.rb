@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Admins::UnlocksController < Devise::UnlocksController
+
   layout 'admin'
   # GET /resource/unlock/new
   # def new
@@ -28,4 +29,5 @@ class Admins::UnlocksController < Devise::UnlocksController
   # def after_unlock_path_for(resource)
   #   super(resource)
   # end
+
 end

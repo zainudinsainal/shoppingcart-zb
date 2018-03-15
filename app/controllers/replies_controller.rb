@@ -16,8 +16,8 @@ class RepliesController < ApplicationController
     @reply.save
     redirect_to new_product_review_reply_path(params[:review_id])
   end
-  
-  def destroy 
+
+  def destroy
     @product = Product.find(params[:product_id])
     @review = Review.find(params[:review_id])
     @reply = Reply.find(params[:id])

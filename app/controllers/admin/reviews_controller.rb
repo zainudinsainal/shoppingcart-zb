@@ -4,13 +4,13 @@ class Admin::ReviewsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @reviews= Review.all
+    @reviews = Review.all
   end
 
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    flash[:alert] = "Category was successfully deleted"
+    flash[:alert] = 'Category was successfully deleted'
     redirect_to admin_categories_path
   end
 
