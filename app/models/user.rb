@@ -9,12 +9,16 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :name, presence: true
   validates :birthday, presence: true
+  validate :birth
 
-  validates_each :birthday do |record, attr, value|
-      record.errors.add(attr, 'is incorrect') if value >= Time.zone.now.to_date
-    end
+  def birth
+    errors.add(:birthday, "is incorrect") if
+    !birthday.blank? && birthday > Date.today
+  end
 
   enum gender: [:male, :female]
+
+
 
   has_many :orders
   has_many :reviews
