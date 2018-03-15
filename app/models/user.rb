@@ -13,12 +13,10 @@ class User < ApplicationRecord
 
   def birth
     errors.add(:birthday, "is incorrect") if
-    !birthday.blank? && birthday > Date.today
+    birthday.present? && birthday > Time.zone.today
   end
 
   enum gender: [:male, :female]
-
-
 
   has_many :orders
   has_many :reviews
