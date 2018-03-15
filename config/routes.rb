@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   root "products#index"
-  
-  devise_for :users ,path: 'users' ,controllers: { sessions: "users/sessions"}
-  devise_for :admins ,path: 'admins' ,controllers: { sessions: "admins/sessions"}
+
+  devise_for :users, path: 'users', controllers: { sessions: "users/sessions", registrations: "users/registrations"}
+  devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions"}
 
   resources :restaurants, only: [:show] do
     resources :follow, only: [:create, :destroy] do
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
 
-  resource :cart, only: [:show] 
+  resource :cart, only: [:show]
 
   resources :transactions, only: [:new, :create]
 

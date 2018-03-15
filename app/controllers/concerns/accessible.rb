@@ -12,7 +12,7 @@ module Accessible
       flash.clear
       # if you have rails_admin. You can redirect anywhere really
       redirect_to(admin_root_path) && return
-    elsif current_user
+    elsif current_user && session[:cart].present?
       flash.clear
       if session[:cart].nil?
         redirect_to root_path
@@ -23,7 +23,6 @@ module Accessible
         session[:cart] = nil
         redirect_to cart_path
       end
-      # redirect_to(root_path) && return
     end
   end
 

@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   include Accessible
+  after_action :check_cart
   skip_before_action :check_user, only: :destroy
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -41,7 +42,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+   protected
+
+  def check_cart
+    if current_user && session[:cart].present?
+      session[:cart].each do |product_id, quantity|
+        $redis.hset current_user.id, product_id, quantity
+        session[:cart] = nil
+      end
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
