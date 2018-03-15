@@ -6,10 +6,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }
-  validates :password, presence: true
   validates :address, presence: true
   validates :name, presence: true
   validates :birthday, presence: true
+
+  validates_each :birthday do |record, attr, value|
+      record.errors.add(attr, 'is incorrect') if value >= Time.now.to_date
+    end
+
   enum gender: [:male, :female]
 
   has_many :orders
