@@ -28,18 +28,4 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  # private
-
-  # def session_to_cart
-  #   if session[:cart] == nil
-  #     redirect_to root_path
-  #   else
-  #     session[:cart].each do |product_id, quantity|
-  #       $redis.hset current_user.id, product_id, quantity
-  #     end
-  #     session[:cart] = nil
-  #     redirect_to cart_path
-  #   end
-  # end
-
 end

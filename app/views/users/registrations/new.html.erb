@@ -47,11 +47,11 @@
 
               <div class="form-group">
                 <%= f.label :birthday, "Date of Birth" %>
-                <%= f.date_select :birthday, class: "form-control" %>
+                <%= f.date_select :birthday, start_year: 1920, end_year: Date.today.year, order: [:day, :month, :year], default: Date.today, class: "form-control" %>
               </div>
 
               <div class="form-group">
-                <%= link_to 'Back', new_user_session_path, class: 'btn btn-info'%> 
+                <%= link_to 'Back', new_user_session_path, class: 'btn btn-info'%>
                 <%= f.submit "Sign Up", class: "btn btn-primary" %>
               </div>
             </form>
