@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>ShoppingCart</title>
     <%= csrf_meta_tags %>
     <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
@@ -24,10 +30,10 @@
             <li class="nav-item navbar-nav "><%= link_to('Following', user_path(current_user), class: 'nav-link') %></li>
             <li class="nav-item navbar-nav "><%= link_to('Edit Profile', edit_user_path(current_user) , class: 'nav-link') %></li>
             <li class="nav-item navbar-nav "><%= link_to('Change Password', edit_user_registration_path , class: 'nav-link') %></li>
-            <li class="nav-item navbar-nav "><%= link_to('Log out', destroy_user_session_path, method: :delete, class: 'nav-link') %></li> 
+            <li class="nav-item navbar-nav "><%= link_to('Log out', destroy_user_session_path, method: :delete, class: 'nav-link') %></li>
           <% else %>
-            <li class="navbar-nav nav-item"><%= link_to('Cart', cart_path, class: 'nav-link') %></li> 
-            <li class="navbar-nav nav-item"><%= link_to('Sign Up', new_user_registration_path, class: 'nav-link') %></li> 
+            <li class="navbar-nav nav-item"><%= link_to('Cart', cart_path, class: 'nav-link') %></li>
+            <li class="navbar-nav nav-item"><%= link_to('Sign Up', new_user_registration_path, class: 'nav-link') %></li>
             <li class="navbar-nav nav-item"><%= link_to('Log in', new_user_session_path, class: 'nav-link') %></li>
           <% end %>
         </ul>
