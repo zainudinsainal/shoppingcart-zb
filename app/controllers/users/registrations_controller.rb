@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-   protected
+  protected
 
   def check_cart
     if current_user && session[:cart].present?
