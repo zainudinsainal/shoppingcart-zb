@@ -24,13 +24,13 @@
         <div class="card-body">
           <p><small><b>@<%= reply.user.name %></b> Replied <%= time_ago_in_words(reply.created_at)%> ago</small>&nbsp;&nbsp;
           <% if reply.user == current_user %>
-            <%= link_to icon('far', 'trash-alt'), product_review_reply_path(@product, @review, reply), method: :delete, remote: true %>&nbsp;&nbsp;
+            <%= link_to icon('far', 'trash-alt'), product_review_reply_path(@product, @review, reply), method: :delete %>&nbsp;&nbsp;
           <% end %></p>
           <p><%= icon('far', 'comment-alt') %>&nbsp;&nbsp;<%= reply.body %>&nbsp;&nbsp;</p>
           <%if ReplyLike.find_by(reply: reply, user: current_user) %>
-              <%= link_to icon('fas', 'star'), runlike_product_review_reply_path(@product, @review, reply), method: :delete, remote: true %>
+              <%= link_to icon('fas', 'star'), runlike_product_review_reply_path(@product, @review, reply), method: :delete%>
             <% else %>
-              <%= link_to icon('far', 'star'), rlike_product_review_reply_path(@product, @review, reply), method: :post, remote: true %>
+              <%= link_to icon('far', 'star'), rlike_product_review_reply_path(@product, @review, reply), method: :post%>
             <% end %>
               &nbsp;<%= reply.reply_likes.count %>
         </div>
