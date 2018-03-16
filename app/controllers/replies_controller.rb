@@ -14,7 +14,7 @@ class RepliesController < ApplicationController
     @reply = @review.replies.create(reply_params)
     @reply.user = current_user
     @reply.save
-    redirect_to new_product_review_reply_path(params[:review_id])
+    redirect_to new_product_review_reply_path(@product, params[:review_id])
   end
 
   def destroy
