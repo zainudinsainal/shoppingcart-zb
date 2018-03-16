@@ -4,7 +4,7 @@
       <div class="card bg-light">
         <div class="card-body">
           <p><b>@<%= @review.user.name %> </b>: <%= @review.content %> </p>
-          <%= form_for @reply, url: product_review_replies_path, method: :post do |f| %>
+          <%= form_for @reply, url: product_review_replies_path(@product, @review), method: :post do |f| %>
           <div class="form-group">
             <%= f.text_area :body, placeholder: "Leave a reply", class: "form-control"  %>
           </div>
@@ -12,7 +12,7 @@
             <%= link_to 'Back', product_path(@product), class: "btn btn-warning" %>
             <%= f.submit "Reply", class: "btn btn-success", remote: true %>
           </div>
-          <% end %>  
+          <% end %>
         </div>
       </div>
     </div>
