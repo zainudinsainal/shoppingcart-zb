@@ -99,7 +99,7 @@ japan_product1 = [
   {name: "Mushroom Ramen", description: "Musroom broth ramen with sliced chciken" , price: '14.90'},
   {name: "Chicken Cha-Shu Ramen", description: "Bean Paste broth ramen with seaweed" , price: '18.20'},
   {name: "Dry Ramen", description: "Beef Cutlet with white rice" , price: '9.50'},
-  {name: "Abalone Seafood Ramen", description: "Curry with rice" , price: '2'},
+  {name: "Abalone Seafood Ramen", description: "Curry with rice" , price: '20.00'},
   {name: "Kimchi with Minced Chicken", description: "Curry with rice" , price: '10.50'},
   {name: "Salmon Maki", description: "Sides/Savoury Meat Pancake" , price: '12.90'},
   {name: "Assorted Sushi", description: "Sides/Sweet flour ball" , price: '9.90'},

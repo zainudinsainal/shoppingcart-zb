@@ -2,7 +2,6 @@ class RestaurantsController < ApplicationController
 
   def show
     @products = Product.all
-    @product = Product.find(params[:id])
     @restaurants = Restaurant.all
     @restaurant = Restaurant.find(params[:id])
   end
