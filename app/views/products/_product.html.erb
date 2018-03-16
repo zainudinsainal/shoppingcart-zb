@@ -1,6 +1,6 @@
 <% @products.each do |product| %>
   <div class="col-md-4 mb-3">
-    <div class="card">
+    <div class="card" style="height: 23rem;">
       <div class="card-body">
         <p><%= link_to product_path(product) do %>
         <%= image_tag product.image, class: "card-img-top" %>
