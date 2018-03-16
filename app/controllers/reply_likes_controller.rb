@@ -3,9 +3,12 @@ class ReplyLikesController < ApplicationController
   before_action :authenticate_user!
 
   def create
+
     reply = Reply.find(params[:id])
     reply.reply_likes.create(user: current_user)
-    redirect_to new_product_review_reply_path(@product, @review, params[:review_id])
+    @review = Review.find(params[:review_id])
+    @product = Product.find(params[:product_id])
+    redirect_to new_product_review_reply_path(@product, @review, params[:reply_id])
   end
 
   def destroy
