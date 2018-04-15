@@ -96,7 +96,7 @@ puts "13 Korean foods created"
 #Japanese
 japan_product1 = [
   {name: "Kimchi With Chicken Ramen", description: "Chicken broth ramen with vegetables lightly seasoned with salt" , price: '16.50'},
-  {name: "Mushroom Ramen", description: "Musroom broth ramen with sliced chciken" , price: '14.90'},
+  {name: "Mushroom Ramen", description: "Musroom broth ramen with sliced chicken" , price: '14.90'},
   {name: "Chicken Cha-Shu Ramen", description: "Bean Paste broth ramen with seaweed" , price: '18.20'},
   {name: "Dry Ramen", description: "Beef Cutlet with white rice" , price: '9.50'},
   {name: "Abalone Seafood Ramen", description: "Curry with rice" , price: '20.00'},
@@ -140,7 +140,7 @@ chinese_product1 = [
   {name: "Ban Mian", description: "Noodles with soup" , price: '4.50'},
   {name: "Zha Jiang Noodles", description: "Dry Noodles with Mince Meat" , price: '3.50'},
   {name: "Dao Siao Noodle", description: "Noodles with soup" , price: '3.50'},
-  {name: "Crispy Roasted Chicken", description: "Chicken" , price: '3.50'},
+  {name: "Crispy Roasted Chicken", description: "Chicken dish" , price: '3.50'},
   {name: "Chinese Dumplings", description: "Sides" , price: '1.50'},
   {name: "Siew Mai", description: "Sides" , price: '1.50'},
 ]
@@ -150,10 +150,10 @@ chinese_product1.each do |p|
 end
 
 chinese_product2 = [
-  {name: "Teriyaki Beef with Egg Fried Rice ", description: "Noodles with soup" , price: '11.50'},
-  {name: "Nasi Gorneg With Satay", description: "Dry Noodles with Mince Meat" , price: '13.90'},
-  {name: "XO Seafood Fried Rice", description: "Noodles with soup" , price: '10.80'},
-  {name: "Macau Chicken Chop Fried Rice", description: "Steamed Sea Bass with Spicy Thai Sauce" , price: '10.30'},
+  {name: "Teriyaki Beef with Egg Fried Rice ", description: "Beef with egg rice" , price: '11.50'},
+  {name: "Nasi Gorneg With Satay", description: "Rice with skewed meat" , price: '13.90'},
+  {name: "XO Seafood Fried Rice", description: "Fried rice with soup" , price: '10.80'},
+  {name: "Macau Chicken Chop Fried Rice", description: "Chicken Chop Fried Rice Macau style" , price: '10.30'},
   {name: "Curry Chicken With Rice", description: "Sides" , price: '11.50'},
   {name: "Tom Yum Seafood Soup", description: "Sides" , price: '15.50'},
 ]
@@ -169,10 +169,10 @@ puts "12 Chinese foods created"
 #Indian
 
 indian_product1 = [
-  {name: "Chicken Briyani", description: "Noodles with soup" , price: '11.50'},
-  {name: "Dal Makhani", description: "Dry Noodles with Mince Meat" , price: '13.90'},
-  {name: "Dhokla", description: "Noodles with soup" , price: '10.80'},
-  {name: "Medu Vada", description: "Steamed Sea Bass with Spicy Thai Sauce" , price: '10.30'},
+  {name: "Chicken Briyani", description: "Chicken turmeric rice" , price: '11.50'},
+  {name: "Dal Makhani", description: " Black lentils, red kidney beans, butter and cream stew" , price: '13.90'},
+  {name: "Dhokla", description: "Chickpeas and rice cake" , price: '10.80'},
+  {name: "Medu Vada", description: "Black matpe bean fritter" , price: '10.30'},
   {name: "Naan", description: "Naan" , price: '2.50'},
   {name: "Roti Prata", description: "Sides" , price: '3.50'},
 ]
