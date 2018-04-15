@@ -66,3 +66,29 @@ rake db:create db:migrate db:seed
 ```
 rails s
 ```
+
+
+## Testing
+
+We use [Rspec](https://github.com/rspec/rspec-rails) as our testing framework. For now, all models in this web application is tested.
+
+```bash
+# Run the specs
+rspec
+```
+
+## Deployment
+
+This application is deployed to heroku. Automatic deployment has been setup for our production environment as documented [here](https://devcenter.heroku.com/articles/github-integration#automatic-deploys). To manually deploy to heroku with Git, you need to:
+
+# Basic steps for heroku deployment
+
+1. Register a heroku account and request access to production app
+2. Install [heroku toolbelt](https://toolbelt.heroku.com/) which is a CLI tool for creating and managing Heroku apps
+3. Setup Heroku remote
+4. You may visit this project at https://git.heroku.com/ac-project-sample.git
+
+```bash
+# Setup heroku remote for production
+git remote add heroku https://git.heroku.com/ac-project-sample.git
+```
